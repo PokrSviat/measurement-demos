@@ -1,0 +1,75 @@
+{
+  "model": "meridian",
+  "manifest": {
+    "dataset_sha256": "d541cfa92ca68fbda03ce6c987733e996b3abf44a95f2a32ce6836b9f8258cf1",
+    "target": "revenue",
+    "date_min": "2015-11-23",
+    "date_max": "2019-11-11",
+    "regressors": [
+      "tv_S",
+      "ooh_S",
+      "print_S",
+      "facebook_I",
+      "search_clicks_P"
+    ],
+    "holdout_weeks": 8,
+    "seed": 20241006
+  },
+  "estimand": "marginal_roi_next_ruble",
+  "holdout_mape": 0.01619147498082058,
+  "holdout_actual": [
+    2510951.66666667,
+    2275620.0,
+    2505161.66666667,
+    2456240.0,
+    2182825.0,
+    2377706.66666667,
+    2732825.0,
+    2767788.33333333
+  ],
+  "holdout_pred": [
+    2552925.0395006905,
+    2273080.8779315534,
+    2527776.420722818,
+    2354635.7195722237,
+    2192222.852921875,
+    2337961.650003533,
+    2768991.008330449,
+    2692914.514006964
+  ],
+  "channel_roi": {
+    "tv": 3.489106453885598,
+    "ooh": 0.7083853373330896,
+    "print": 1.9864212765422509,
+    "facebook": 3.632935359260394,
+    "search": 0.920562772831973
+  },
+  "channel_roi_low": {
+    "tv": 2.032545055003536,
+    "ooh": 0.15887639751788107,
+    "print": 0.1507375057116673,
+    "facebook": 0.024449425763676872,
+    "search": 0.08323533618767968
+  },
+  "channel_roi_high": {
+    "tv": 5.367724366398048,
+    "ooh": 1.5072334452969611,
+    "print": 7.480891476275796,
+    "facebook": 16.994566942702246,
+    "search": 3.5377932728501778
+  },
+  "interval": "2.5th to 97.5th percentile of posterior draws",
+  "interval_kind": "posterior",
+  "channel_contraction": {
+    "tv": 0.12670420557555528,
+    "ooh": 0.8596953935034455,
+    "print": -1.2388086849671511,
+    "facebook": 0.7954401192783997,
+    "search": 0.03435613838383478
+  },
+  "contraction_parameter": "marginal ROI",
+  "r_hat_max": 1.002076422207505,
+  "prior_sensitivity_relative": null,
+  "sensitivity_run": true,
+  "seed": 20241006
+}

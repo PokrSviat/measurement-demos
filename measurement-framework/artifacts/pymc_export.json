@@ -1,0 +1,80 @@
+{
+  "model": "pymc",
+  "manifest": {
+    "dataset_sha256": "d541cfa92ca68fbda03ce6c987733e996b3abf44a95f2a32ce6836b9f8258cf1",
+    "target": "revenue",
+    "date_min": "2015-11-23",
+    "date_max": "2019-11-11",
+    "regressors": [
+      "tv_S",
+      "ooh_S",
+      "print_S",
+      "facebook_I",
+      "search_clicks_P"
+    ],
+    "holdout_weeks": 8,
+    "seed": 20241006
+  },
+  "estimand": "marginal_roi_next_ruble",
+  "holdout_mape": 0.03790120733138171,
+  "holdout_actual": [
+    2510951.66666667,
+    2275620.0,
+    2505161.66666667,
+    2456240.0,
+    2182825.0,
+    2377706.66666667,
+    2732825.0,
+    2767788.33333333
+  ],
+  "holdout_pred": [
+    2356253.6329799183,
+    2505912.093654291,
+    2426799.1605580417,
+    2380136.6683317525,
+    2143269.12554518,
+    2316999.068765561,
+    2735060.8392398586,
+    2674610.796503881
+  ],
+  "channel_roi": {
+    "tv": 3.7303639912051167,
+    "ooh": 0.39427924182720075,
+    "print": 7.0751083036555515,
+    "facebook": 6.2897985466224045,
+    "search": 3.4438181636282352
+  },
+  "channel_roi_low": {
+    "tv": 2.357495932429337,
+    "ooh": -0.22988397693615015,
+    "print": -0.28416851953249656,
+    "facebook": -9.760207465507598,
+    "search": -9.52950414925771
+  },
+  "channel_roi_high": {
+    "tv": 5.50638960503934,
+    "ooh": 1.23012161613317,
+    "print": 15.329721071360838,
+    "facebook": 24.25760177062645,
+    "search": 19.602725689823014
+  },
+  "interval": "2.5th to 97.5th percentile of posterior draws",
+  "interval_kind": "posterior",
+  "channel_contraction": {
+    "tv": 0.9384582479790166,
+    "ooh": 0.8722143139488913,
+    "print": 0.9413165658446954,
+    "facebook": 0.9358839131352341,
+    "search": 0.8810145058184524
+  },
+  "contraction_parameter": "marginal ROI",
+  "channel_spend_share": {
+    "tv": 0.21223126729899738,
+    "ooh": 0.6280075317866728,
+    "print": 0.05139990185320726,
+    "facebook": 0.029278652693349283,
+    "search": 0.0790826463677732
+  },
+  "r_hat_max": 1.003634483013451,
+  "prior_sensitivity_relative": 0.11909973705641422
+}

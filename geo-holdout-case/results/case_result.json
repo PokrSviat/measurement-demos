@@ -1,0 +1,226 @@
+{
+  "author": "Sviatoslav Pokrovskii",
+  "question": "Should this tactic be scaled after the geo experiment?",
+  "analysis_plan_version": 5,
+  "analysis_plan_sha256": "46c0ed2ea422a30293f2f7ffcf37e997be71482f19ef773f335326e73f7ca422",
+  "treated_group": 2,
+  "n_treated": 50,
+  "n_control": 50,
+  "window": {
+    "start": "2015-02-16",
+    "test_end": "2015-03-15",
+    "end": "2015-04-07"
+  },
+  "test_cost": 50000.0,
+  "cuped": {
+    "name": "cuped",
+    "att_daily": 59.46277920520831,
+    "se_daily": 16.08192990859199,
+    "ci_low": 27.942196584368002,
+    "ci_high": 90.98336182604861,
+    "incremental": 151035.4591812291,
+    "incremental_low": 70973.17932429473,
+    "incremental_high": 231097.73903816348,
+    "n_treated": 50,
+    "n_control": 50,
+    "n_post_days": null,
+    "theta": 0.4057702279058068,
+    "treated_location_days": 2540
+  },
+  "decision_interval_shape": "proportional",
+  "randomization_interval": {
+    "low": 115768.34759738969,
+    "high": 198149.2302251397
+  },
+  "additive_randomization_interval": {
+    "low": 88404.2327882124,
+    "high": 226168.77845398174
+  },
+  "did": {
+    "name": "did",
+    "att_daily": 55.97852135351147,
+    "se_daily": 84.47386387707502,
+    "ci_low": -109.59025184555557,
+    "ci_high": 221.5472945525785,
+    "incremental": 142185.44423791912,
+    "incremental_low": -278359.2396877112,
+    "incremental_high": 562730.1281635494,
+    "n_treated": 50,
+    "n_control": 50,
+    "n_post_days": null,
+    "theta": null,
+    "treated_location_days": 2540
+  },
+  "control_correlation": 0.9980360752118967,
+  "test_window": {
+    "start": "2015-02-16",
+    "end": "2015-03-15",
+    "cuped": {
+      "name": "cuped",
+      "att_daily": 107.48799251321807,
+      "se_daily": 28.755047965335073,
+      "ci_low": 51.12809850116133,
+      "ci_high": 163.84788652527482,
+      "incremental": 149730.77357091277,
+      "incremental_low": 71221.44121211773,
+      "incremental_high": 228240.10592970782,
+      "n_treated": 50,
+      "n_control": 50,
+      "n_post_days": null,
+      "theta": 0.2636862387600157,
+      "treated_location_days": 1393
+    },
+    "randomization_interval": {
+      "low": 132271.93141821056,
+      "high": 173431.44423612292
+    }
+  },
+  "after_test": {
+    "start": "2015-03-16",
+    "end": "2015-04-07",
+    "cuped": {
+      "name": "cuped",
+      "att_daily": 0.9819833510496778,
+      "se_daily": 9.52964294253834,
+      "ci_low": -17.696116816325468,
+      "ci_high": 19.660083518424823,
+      "incremental": 1126.3349036539805,
+      "incremental_low": -20297.44598832531,
+      "incremental_high": 22550.11579563327,
+      "n_treated": 50,
+      "n_control": 50,
+      "n_post_days": null,
+      "theta": 0.5787386281644266,
+      "treated_location_days": 1147
+    },
+    "randomization_interval": {
+      "low": -19182.37692903958,
+      "high": 27688.457687839633
+    }
+  },
+  "missing_treated_location_days": 10,
+  "top5_pretest_share": 0.40177850699691037,
+  "weighted_total_descriptive": 636997.381523804,
+  "dropped_geos": [
+    "1",
+    "4",
+    "6",
+    "7",
+    "9"
+  ],
+  "cuped_without_largest": {
+    "name": "cuped",
+    "att_daily": 31.269910191219992,
+    "se_daily": 8.49711666976904,
+    "ci_low": 14.615561518472674,
+    "ci_high": 47.92425886396731,
+    "incremental": 71451.74478693768,
+    "incremental_low": 33396.55806971006,
+    "incremental_high": 109506.9315041653,
+    "n_treated": 45,
+    "n_control": 50,
+    "n_post_days": null,
+    "theta": 0.4057702279058068,
+    "treated_location_days": 2285
+  },
+  "without_largest_randomization_interval": {
+    "low": 53544.325692447776,
+    "high": 93455.07932966333
+  },
+  "strata": [
+    {
+      "stratum": 0,
+      "median_pre": 24.489189024390246,
+      "daily_effect": 4.152551601119967,
+      "low": -0.3223397527546568,
+      "high": 8.890671858163685,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 1,
+      "median_pre": 41.05475029036005,
+      "daily_effect": 8.092334243150162,
+      "low": 0.9638183422588125,
+      "high": 16.102079482783047,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 2,
+      "median_pre": 58.14404761904762,
+      "daily_effect": 9.170684077795187,
+      "low": -2.53200829125882,
+      "high": 21.339341772298944,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 3,
+      "median_pre": 88.91107142857143,
+      "daily_effect": 2.468294407240336,
+      "low": -15.933525144028561,
+      "high": 21.491506059705536,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 4,
+      "median_pre": 122.7929761904762,
+      "daily_effect": 19.74311006958652,
+      "low": -2.035564078283753,
+      "high": 41.10975524709168,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 5,
+      "median_pre": 164.65714285714284,
+      "daily_effect": 27.836296770806285,
+      "low": 12.477402556445394,
+      "high": 44.298856657915934,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 6,
+      "median_pre": 232.66547619047617,
+      "daily_effect": 11.671659960690874,
+      "low": -17.9827427434247,
+      "high": 39.79289204333871,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 7,
+      "median_pre": 394.75369047619046,
+      "daily_effect": 60.70820365195334,
+      "low": 44.179446642026974,
+      "high": 84.33934620631719,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 8,
+      "median_pre": 938.9991666666667,
+      "daily_effect": 147.16456993557347,
+      "low": 69.58699683867644,
+      "high": 221.72411962558863,
+      "n_assignments": 252
+    },
+    {
+      "stratum": 9,
+      "median_pre": 2073.629404761905,
+      "daily_effect": 303.62008733416724,
+      "low": 132.3593818222385,
+      "high": 507.02182552873626,
+      "n_assignments": 252
+    }
+  ],
+  "slope_test": {
+    "slope": 61.04592186630616,
+    "p_value": 0.0004997501249375312,
+    "n_reassignments": 2000
+  },
+  "decision": {
+    "fund": false,
+    "recommendation": "Hold. Confirm on a new panel.",
+    "cost_per_incremental": 0.4318969825317554,
+    "reason": "The cumulative incremental interval is positive and the cost per incremental sale at its lower bound is within the cap. This plan was written after the slope on this panel, so that is not a confirmatory scale.",
+    "clears_cap": true,
+    "confirmatory": false
+  },
+  "memo": "Should this tactic be scaled after the geo experiment?\n\nEstimand\nCumulative incremental sales from the first test day through the last day after the test, from a CUPED difference with one vote per geo, scaled by the observed treated location-days in that window. Sales pulled forward from the weeks after the test lower this total. DiD does not decide.\n\nAnalysis plan\nVersion 5, sha256 46c0ed2ea422, committed before this run. It was written after earlier reads of this panel had been seen, so it is fixed after exploration, not before any data were seen.\n\nRead of the public panel\nThe test group is 50 geos, assigned 5 per stratum of 10 geos ranked by pre-test sales. The cumulative window runs from 2015-02-16 to 2015-04-07 and uses 2540 observed treated location-days. 10 treated location-days inside it are missing and are not imputed.\nCUPED cumulative incremental sales: 151035.\nRandomization interval: 115768 to 198149, with each hypothesized total spread proportional to pre-period sales. That interval reassigns the treated slots inside the strata, refits theta on every redraw, and it decides. The plan picks the spread with the slope test below at alpha 0.05: p-value below 0.001, so the proportional interval decides.\nInterval with an equal spread per location-day, for reading: 88404 to 226169.\nNormal approximation, for reference: 70973 to 231098.\nDiD, for reference: 142185 (normal approximation -278359 to 562730).\nOn control geos the pre-period mean and the change into the window have correlation 0.998, so the daily standard error falls from 84 to 16.\n\nThe two parts of that window, for reading only:\n- test window, 2015-02-16 to 2015-03-15: CUPED 149731 (randomization interval 132272 to 173431).\n- after the test, 2015-03-16 to 2015-04-07: CUPED 1126 (randomization interval -19182 to 27688).\n\nPretest-weighted CUPED total\nDescriptive only: 636997, 4.2 times the decision total. Under a homogeneous additive effect both totals estimate the same number. When the effect grows with geo size the weighted total counts the large geos twice. Median pre-test daily sales are 143, the largest geo is 5303, and the five largest geos are 40% of pre-test sales.\n\nTail, for reading only\nWithout the five test geos that have the highest advertising cost, CUPED cumulative incremental sales: 71452 (randomization interval 53544 to 93455).\nDaily effect per geo-day by pretest-volume stratum, smallest first, exact interval over the 252 assignments inside each stratum:\n- stratum 1 (median 24): 4 (0 to 9)\n- stratum 2 (median 41): 8 (1 to 16)\n- stratum 3 (median 58): 9 (-3 to 21)\n- stratum 4 (median 89): 2 (-16 to 21)\n- stratum 5 (median 123): 20 (-2 to 41)\n- stratum 6 (median 165): 28 (12 to 44)\n- stratum 7 (median 233): 12 (-18 to 40)\n- stratum 8 (median 395): 61 (44 to 84)\n- stratum 9 (median 939): 147 (70 to 222)\n- stratum 10 (median 2074): 304 (132 to 507)\nThe effect per geo-day changes by 61 per unit of log pre-test sales (randomization p-value below 0.001 against a constant additive effect, 2000 stratified reassignments).\n\nDecision power on the pre-test\nIt does not decide. Each of 300 draws per row assigns test geos inside strata on a 28-day pseudo window, plants an effect whose true cost per incremental sale is fixed, and runs the same two-stage rule, the slope test and then the chosen interval, with 500 reassignments and the same cap. Scale is right below the cap and wrong above it. The pseudo window has no weeks after it, so this covers the test window only, and 14 pseudo pre-period days make the covariate noisier than in the read.\n- additive, no true effect: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 95%, proportional interval chosen in 5%, mean bias -20, weighted-total mean bias 598.\n- additive, true cost 0.25: scale in 100% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 98%, proportional interval chosen in 9%, mean bias 202, weighted-total mean bias 1145.\n- additive, true cost 0.40: scale in 87% (Monte Carlo standard error 1.9%), correct call in 87%, coverage 99%, proportional interval chosen in 8%, mean bias -256, weighted-total mean bias -830.\n- additive, true cost 0.50: scale in 1% (Monte Carlo standard error 0.5%), at the cap either call is defensible, coverage 99%, proportional interval chosen in 7%, mean bias 589, weighted-total mean bias 3705.\n- additive, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 98%, proportional interval chosen in 7%, mean bias -344, weighted-total mean bias -2387.\n- proportional, no true effect: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 95%, proportional interval chosen in 5%, mean bias -466, weighted-total mean bias -2390.\n- proportional, true cost 0.25: scale in 100% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 95%, proportional interval chosen in 100%, mean bias -2423, weighted-total mean bias 673955.\n- proportional, true cost 0.40: scale in 87% (Monte Carlo standard error 1.9%), correct call in 87%, coverage 94%, proportional interval chosen in 100%, mean bias -1455, weighted-total mean bias 423304.\n- proportional, true cost 0.50: scale in 4% (Monte Carlo standard error 1.1%), at the cap either call is defensible, coverage 94%, proportional interval chosen in 100%, mean bias -2180, weighted-total mean bias 339836.\n- proportional, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 96%, proportional interval chosen in 100%, mean bias -1836, weighted-total mean bias 282680.\n\nBlind check\n200 synthetic panels per row, drawn after the plan was fixed from a seed in it, with log-normal geo sizes fitted to pre-test sales and noise that grows with geo size. The sizes and noise come from the same pre-test, so this checks the rule under that family of panels, not under an unknown one. The two-stage rule runs with 500 reassignments.\n- additive, true cost 0.25: scale in 100% (Monte Carlo standard error 0.5%), correct call in 100%, proportional interval chosen in 6%.\n- additive, true cost 0.40: scale in 82% (Monte Carlo standard error 2.7%), correct call in 82%, proportional interval chosen in 6%.\n- additive, true cost 0.50: scale in 1% (Monte Carlo standard error 0.7%), at the cap either call is defensible, proportional interval chosen in 6%.\n- additive, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, proportional interval chosen in 6%.\n- proportional, true cost 0.25: scale in 100% (Monte Carlo standard error 0.0%), correct call in 100%, proportional interval chosen in 100%.\n- proportional, true cost 0.40: scale in 82% (Monte Carlo standard error 2.7%), correct call in 82%, proportional interval chosen in 99%.\n- proportional, true cost 0.50: scale in 3% (Monte Carlo standard error 1.2%), at the cap either call is defensible, proportional interval chosen in 100%.\n- proportional, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, proportional interval chosen in 100%.\n\nRecommendation\nHold. Confirm on a new panel. The cumulative incremental interval is positive and the cost per incremental sale at its lower bound is within the cap. This plan was written after the slope on this panel, so that is not a confirmatory scale.\nCost per incremental sale at the decision bound: 0.43.\nObserved test cost 50000. Cap 0.5.\nThe decision uses the randomization lower bound of the cumulative total, not the point estimate and not the normal approximation. The cap means incremental sales must be at least twice the test spend. It is a planning assumption for this public case, not an employer budget. The test cost is the observed advertising cost in the cumulative window.\n\nWhat changed after the first run\nCommit 2af3759 decided on the unweighted CUPED point estimate against the cap, with a normal interval, and said scale.\nCommit 436088c moved the decision to a pretest-weighted CUPED total with a stratified randomization interval and its lower bound, added a power gate from 80 draws and a cooldown lower-bound gate, and said do not scale.\nCommit 3831ec4 returned to one vote per geo, made power a design check, and made the cooldown test refuse only on sales pulled forward. It said do not scale.\nVersion 4 of the analysis plan makes the cumulative total through the weeks after the test the estimand, so pull-forward lowers the bound that decides and the separate cooldown test is gone. Power against zero is replaced by decision power at known true costs.\nVersion 5 keeps that estimand and the cap and changes the interval: a stratified slope test chooses between hypotheses spread equally per location-day and hypotheses proportional to pre-period sales, because the version 4 read showed an effect that grows with geo size and a rule that could not fund a tactic under the cap with that shape. Version 5 was written after that read, so it is a plan fixed after exploration on this panel, not one fixed before any data were seen; the decision power and blind check run the whole two-stage rule.\nThe plan file was committed before this run, its hash is in the case result, and the blind check draws its panels from a seed fixed in that plan. The cap did not change in any version. The recommendation speech was later tightened to Hold on this post-exploration plan. The interval, the cap and the plan hash did not change.\n\nWhat would overturn this\nA confirmatory read on a new panel under a plan fixed before that assignment. The interval and the cap on this panel did not change. The numbers are from this public panel and the assumptions in the analysis plan."
+}

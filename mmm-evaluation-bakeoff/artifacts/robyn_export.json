@@ -1,0 +1,43 @@
+{
+  "model": "robyn",
+  "manifest": {
+    "dataset_sha256": "d541cfa92ca68fbda03ce6c987733e996b3abf44a95f2a32ce6836b9f8258cf1",
+    "target": "revenue",
+    "date_min": "2015-11-23",
+    "date_max": "2019-11-11",
+    "regressors": ["tv_S", "ooh_S", "print_S", "facebook_I", "search_clicks_P"],
+    "holdout_weeks": 8,
+    "seed": 20241006
+  },
+  "estimand": "marginal_roi_next_ruble",
+  "holdout_mape": 0.0316,
+  "holdout_actual": [2510951.6667, 2275620, 2505161.6667, 2456240, 2182825, 2377706.6667, 2732825, 2767788.3333],
+  "holdout_pred": [2369432.232, 2418330.3568, 2465683.3568, 2525626.7737, 2250742.5897, 2431795.8258, 2769303.8515, 2705249.0203],
+  "channel_roi": {
+    "tv": 2.9848,
+    "ooh": 0.4226,
+    "print": 3.3816,
+    "facebook": 5.5758,
+    "search": 6.6877
+  },
+  "channel_roi_low": {
+    "tv": 1.7798,
+    "ooh": 0.2611,
+    "print": 3.7956,
+    "facebook": 2.796,
+    "search": 2.3259
+  },
+  "channel_roi_high": {
+    "tv": 3.6457,
+    "ooh": 0.5642,
+    "print": 8.6549,
+    "facebook": 11.3409,
+    "search": 13.6911
+  },
+  "interval": "2.5th to 97.5th percentile across 43 first-Pareto-front models, not a posterior; the point is the selected model and can sit outside it",
+  "interval_kind": "model_spread",
+  "r_hat_max": null,
+  "prior_sensitivity_relative": null,
+  "trials": 5,
+  "selected_model": "1_1985_1"
+}

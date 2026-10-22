@@ -1,0 +1,3399 @@
+{
+  "question": "Which paid channels earn back the next ruble at observed spend?",
+  "estimand": "Marginal ROI of one extra ruble at observed weekly spend, spend-weighted across training weeks whose full adstock horizon sits inside the series. The point is the mean of that derivative across posterior draws. The interval is the 2.5th to 97.5th percentile of the same draws. The media coefficient prior is normal and centered at zero, so contribution can be negative. The model controls for a linear trend and two yearly harmonics and carries AR(1) errors. A channel whose 95% interval sits entirely above or below 1 is reported as an interval fact. Recovery coverage and mean bias are diagnostics on a misspecified response. This national weekly series does not identify the mix, so no channel is scaled or cut. Average contribution over total spend is not this estimand.",
+  "holdout_mape": 0.03790120733138171,
+  "naive_mape": {
+    "training_mean": 0.2704011446984241,
+    "lag_52": 0.12461869554494664
+  },
+  "backtest": [
+    {
+      "offset_weeks": 0,
+      "holdout_start": "2019-09-23",
+      "holdout_mape": 0.03790120733138171,
+      "naive_mape": {
+        "training_mean": 0.2704011446984241,
+        "lag_52": 0.12461869554494664
+      },
+      "beats_lag_52": true,
+      "failures": []
+    },
+    {
+      "offset_weeks": 8,
+      "holdout_start": "2019-07-29",
+      "holdout_mape": 0.05640323875866567,
+      "naive_mape": {
+        "training_mean": 0.18352498522988253,
+        "lag_52": 0.08184168343839272
+      },
+      "beats_lag_52": true,
+      "failures": []
+    },
+    {
+      "offset_weeks": 16,
+      "holdout_start": "2019-06-03",
+      "holdout_mape": 0.08057053689081249,
+      "naive_mape": {
+        "training_mean": 1.0572172684055405,
+        "lag_52": 0.17596175208249978
+      },
+      "beats_lag_52": true,
+      "failures": []
+    }
+  ],
+  "channel_roi": {
+    "tv": 3.7303639912051167,
+    "ooh": 0.39427924182720075,
+    "print": 7.0751083036555515,
+    "facebook": 6.2897985466224045,
+    "search": 3.4438181636282352
+  },
+  "channel_roi_low": {
+    "tv": 2.357495932429337,
+    "ooh": -0.22988397693615015,
+    "print": -0.28416851953249656,
+    "facebook": -9.760207465507598,
+    "search": -9.52950414925771
+  },
+  "channel_roi_high": {
+    "tv": 5.50638960503934,
+    "ooh": 1.23012161613317,
+    "print": 15.329721071360838,
+    "facebook": 24.25760177062645,
+    "search": 19.602725689823014
+  },
+  "channel_payback": {
+    "tv": "earns",
+    "ooh": "unsettled",
+    "print": "unsettled",
+    "facebook": "unsettled",
+    "search": "unsettled"
+  },
+  "channel_payback_before_recovery_gate": {
+    "tv": "earns",
+    "ooh": "unsettled",
+    "print": "unsettled",
+    "facebook": "unsettled",
+    "search": "unsettled"
+  },
+  "prior_sensitivity": {
+    "scale": 2.0,
+    "published": true,
+    "failures": [],
+    "channels": {
+      "facebook": {
+        "relative_change": 0.11909973705641422,
+        "material": false
+      },
+      "ooh": {
+        "relative_change": 0.14949311674963234,
+        "material": false
+      },
+      "print": {
+        "relative_change": 0.06471887697785342,
+        "material": false
+      },
+      "search": {
+        "relative_change": 0.17937248165351938,
+        "material": false
+      },
+      "tv": {
+        "relative_change": 0.021434761993635924,
+        "material": false
+      }
+    }
+  },
+  "ablation": {
+    "dropped_control": "competitor_sales_B",
+    "failures": [],
+    "channel_roi": {
+      "tv": 3.955913740421734,
+      "ooh": 0.1321587426080773,
+      "print": 8.338271782166055,
+      "facebook": 12.732515860629377,
+      "search": 11.275382654836685
+    }
+  },
+  "recovery": {
+    "design": "delayed adstock and Hill saturation, AR(1) noise; the fitted model is geometric and exponential",
+    "true_roi": {
+      "tv": 2.4599402991253854,
+      "ooh": 0.3112320651492028,
+      "print": 6.185195137107748,
+      "facebook": 5.549208338637615,
+      "search": 3.470483355815453
+    },
+    "n_fits": 100,
+    "n_passed": 99,
+    "fits": [
+      {
+        "seed": 101,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.4816246262583759,
+          "ooh": 0.02746162736219557,
+          "print": 8.57720542566966,
+          "facebook": 24.4358156608837,
+          "search": 0.006889652720762499
+        },
+        "roi_low": {
+          "tv": -0.7251595584222754,
+          "ooh": -0.6270637075278539,
+          "print": -1.795664658957051,
+          "facebook": 2.0345424836297834,
+          "search": -17.027987962304252
+        },
+        "roi_high": {
+          "tv": 4.7599233296414525,
+          "ooh": 0.7022516496617738,
+          "print": 25.307065423267655,
+          "facebook": 52.42672715050684,
+          "search": 15.661625252651058
+        }
+      },
+      {
+        "seed": 102,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.1054155902165366,
+          "ooh": -0.18131479101366563,
+          "print": 9.011822135842882,
+          "facebook": -2.4188744424675277,
+          "search": 10.837594651984269
+        },
+        "roi_low": {
+          "tv": -0.9592841565907846,
+          "ooh": -0.8523574288598456,
+          "print": -1.381794170672474,
+          "facebook": -21.178666033999935,
+          "search": -3.968950627598352
+        },
+        "roi_high": {
+          "tv": 4.23306141770584,
+          "ooh": 0.37755027907760075,
+          "print": 22.069870966594344,
+          "facebook": 14.586745445811419,
+          "search": 33.06334274580398
+        }
+      },
+      {
+        "seed": 103,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.694223148753258,
+          "ooh": 0.08012420992105776,
+          "print": 5.355601929112602,
+          "facebook": 2.479323673113352,
+          "search": 3.124500911650005
+        },
+        "roi_low": {
+          "tv": -0.03555453239617765,
+          "ooh": -0.4768944253525148,
+          "print": -2.592111198763779,
+          "facebook": -12.446866780998759,
+          "search": -9.661271257157342
+        },
+        "roi_high": {
+          "tv": 6.045766183484677,
+          "ooh": 0.6935842333967522,
+          "print": 17.58379676360049,
+          "facebook": 20.02678272989739,
+          "search": 19.87540007659752
+        }
+      },
+      {
+        "seed": 104,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.0943774717969172,
+          "ooh": 0.06958605777458604,
+          "print": 4.870780990897856,
+          "facebook": 3.2572358194543165,
+          "search": 6.237340094520118
+        },
+        "roi_low": {
+          "tv": 0.09818907119027287,
+          "ooh": -0.47934261337910417,
+          "print": -3.627398062041537,
+          "facebook": -12.23038712687139,
+          "search": -7.506526106923747
+        },
+        "roi_high": {
+          "tv": 6.726477323637576,
+          "ooh": 0.7981168600136804,
+          "print": 18.398063445046258,
+          "facebook": 22.9173991116686,
+          "search": 22.714499128236625
+        }
+      },
+      {
+        "seed": 105,
+        "failures": [],
+        "covered": {
+          "tv": false,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": -0.35323064204546356,
+          "ooh": 0.4523230033492698,
+          "print": 4.300543032773732,
+          "facebook": -4.346290053223145,
+          "search": -1.3695791647647848
+        },
+        "roi_low": {
+          "tv": -3.3913044450235144,
+          "ooh": -0.16986432216473688,
+          "print": -3.841712826865321,
+          "facebook": -23.73632174154974,
+          "search": -17.009109054552773
+        },
+        "roi_high": {
+          "tv": 1.7320744571028495,
+          "ooh": 1.3130104126593276,
+          "print": 16.138131876569386,
+          "facebook": 12.517797772381156,
+          "search": 13.984503085988054
+        }
+      },
+      {
+        "seed": 106,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": false,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.5373641657593018,
+          "ooh": -0.004746704734046946,
+          "print": 3.2146617268865487,
+          "facebook": -20.87370296327502,
+          "search": -3.9513485871502834
+        },
+        "roi_low": {
+          "tv": -0.7587841907447039,
+          "ooh": -0.5212308399738181,
+          "print": -4.5059448030439455,
+          "facebook": -39.31620518228172,
+          "search": -17.965592681402367
+        },
+        "roi_high": {
+          "tv": 5.0873126694986786,
+          "ooh": 0.5629791692984104,
+          "print": 15.44940677528242,
+          "facebook": -4.277858168703931,
+          "search": 8.367128712644696
+        }
+      },
+      {
+        "seed": 107,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.329954144844221,
+          "ooh": -0.02202291722678808,
+          "print": 9.253228567955462,
+          "facebook": 1.0990459471113228,
+          "search": 3.822054879857583
+        },
+        "roi_low": {
+          "tv": 1.4494493528353378,
+          "ooh": -0.5677510562081745,
+          "print": -0.83018991867399,
+          "facebook": -14.96391177028352,
+          "search": -9.28526453442501
+        },
+        "roi_high": {
+          "tv": 7.9388521206972635,
+          "ooh": 0.6210078243082475,
+          "print": 22.205445794336487,
+          "facebook": 18.279540623285367,
+          "search": 23.452508937706824
+        }
+      },
+      {
+        "seed": 108,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.283419599628342,
+          "ooh": -0.015853313802691286,
+          "print": -0.27009396939386615,
+          "facebook": 2.0151920920514947,
+          "search": 0.5861910779219888
+        },
+        "roi_low": {
+          "tv": -1.8683200455428908,
+          "ooh": -0.6554285876609245,
+          "print": -10.544746462651093,
+          "facebook": -18.379786950162654,
+          "search": -15.094246159308648
+        },
+        "roi_high": {
+          "tv": 2.6201110196882076,
+          "ooh": 0.6002956059906216,
+          "print": 8.816887652744589,
+          "facebook": 21.638954328728246,
+          "search": 17.654361975969422
+        }
+      },
+      {
+        "seed": 109,
+        "failures": [],
+        "covered": {
+          "tv": false,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": -0.29495247355046844,
+          "ooh": 0.03318686555686519,
+          "print": 16.033082789222004,
+          "facebook": 2.962358803873467,
+          "search": 1.1284321235814414
+        },
+        "roi_low": {
+          "tv": -3.072238627148668,
+          "ooh": -0.6128451940136248,
+          "print": 2.681373691239003,
+          "facebook": -13.186517983196932,
+          "search": -16.40981817599187
+        },
+        "roi_high": {
+          "tv": 1.600943201224075,
+          "ooh": 0.6143421719851772,
+          "print": 31.198893812471677,
+          "facebook": 21.492518915873642,
+          "search": 15.3696074607215
+        }
+      },
+      {
+        "seed": 110,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.9620729567730603,
+          "ooh": 0.250241423379031,
+          "print": 1.7235449174847988,
+          "facebook": 1.9037441970392506,
+          "search": 7.180082244389652
+        },
+        "roi_low": {
+          "tv": -0.8731558212280446,
+          "ooh": -0.239648792380617,
+          "print": -5.803248474321446,
+          "facebook": -12.731553413972,
+          "search": -5.145111122669173
+        },
+        "roi_high": {
+          "tv": 3.4657585694594912,
+          "ooh": 0.9171319294416622,
+          "print": 10.431709169630958,
+          "facebook": 18.143667495796425,
+          "search": 23.173628491997714
+        }
+      },
+      {
+        "seed": 111,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.462593357879438,
+          "ooh": 0.2356629401569868,
+          "print": 5.038442555380865,
+          "facebook": -7.833450639150737,
+          "search": -6.4585602887595055
+        },
+        "roi_low": {
+          "tv": -0.8162101715186213,
+          "ooh": -0.3186709982713687,
+          "print": -2.7334920777576563,
+          "facebook": -25.310475976550517,
+          "search": -21.3011292448055
+        },
+        "roi_high": {
+          "tv": 5.308182013578954,
+          "ooh": 1.0291151078489242,
+          "print": 15.47989703196181,
+          "facebook": 7.3624950425141895,
+          "search": 7.422072418214247
+        }
+      },
+      {
+        "seed": 112,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.8323976123901753,
+          "ooh": 0.07194705437313141,
+          "print": 8.30476888134113,
+          "facebook": -0.31761063922813076,
+          "search": 10.491197939178747
+        },
+        "roi_low": {
+          "tv": 0.2618435238362954,
+          "ooh": -0.5033943566217347,
+          "print": -1.6383064149491962,
+          "facebook": -17.898015192025724,
+          "search": -6.0204983303396995
+        },
+        "roi_high": {
+          "tv": 6.368000569357152,
+          "ooh": 0.6880090699847944,
+          "print": 22.897015447024145,
+          "facebook": 15.256624680806041,
+          "search": 36.785684437127266
+        }
+      },
+      {
+        "seed": 113,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.389575431295192,
+          "ooh": 0.26224925513973674,
+          "print": 5.8135980395339235,
+          "facebook": 1.3380450054747772,
+          "search": -10.088444490163878
+        },
+        "roi_low": {
+          "tv": -0.32539152371339014,
+          "ooh": -0.3316850371403566,
+          "print": -3.489114183376795,
+          "facebook": -18.218605545573432,
+          "search": -30.469239611950908
+        },
+        "roi_high": {
+          "tv": 6.344433642760782,
+          "ooh": 1.0400645422063663,
+          "print": 19.783110391899474,
+          "facebook": 20.990839397980537,
+          "search": 5.978585110895223
+        }
+      },
+      {
+        "seed": 114,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.9718620670843514,
+          "ooh": 0.23359773087593202,
+          "print": 7.697535416219766,
+          "facebook": 10.063709105863655,
+          "search": 1.287480480449137
+        },
+        "roi_low": {
+          "tv": -0.14396503591140014,
+          "ooh": -0.30272376500462267,
+          "print": -1.1546424384651461,
+          "facebook": -5.480998897698407,
+          "search": -12.626383498778424
+        },
+        "roi_high": {
+          "tv": 4.966571472813092,
+          "ooh": 0.975541191290061,
+          "print": 21.174197670507198,
+          "facebook": 30.71318140738237,
+          "search": 15.994497394160295
+        }
+      },
+      {
+        "seed": 115,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.811205429235575,
+          "ooh": 0.1782238199242883,
+          "print": 6.725719357750397,
+          "facebook": 10.599715750662028,
+          "search": 11.090203890194939
+        },
+        "roi_low": {
+          "tv": -0.3737139953655786,
+          "ooh": -0.3884185452510239,
+          "print": -1.8951167983527464,
+          "facebook": -6.114342607856249,
+          "search": -3.0792862317570506
+        },
+        "roi_high": {
+          "tv": 4.919685673095905,
+          "ooh": 1.034087896149825,
+          "print": 18.31222054553373,
+          "facebook": 34.41024384620769,
+          "search": 31.946614510693692
+        }
+      },
+      {
+        "seed": 116,
+        "failures": [],
+        "covered": {
+          "tv": false,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 6.15134055275421,
+          "ooh": 0.16585795845519738,
+          "print": 11.663599090754344,
+          "facebook": 8.709246046626674,
+          "search": -5.336771088087108
+        },
+        "roi_low": {
+          "tv": 2.578402265289597,
+          "ooh": -0.3882399648801683,
+          "print": 0.16320238869993617,
+          "facebook": -7.2963735914181775,
+          "search": -23.44873940140094
+        },
+        "roi_high": {
+          "tv": 9.960833224815993,
+          "ooh": 0.7527861316755065,
+          "print": 24.498981083140475,
+          "facebook": 28.425147934214557,
+          "search": 7.110790732055525
+        }
+      },
+      {
+        "seed": 117,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.09639621276484,
+          "ooh": 0.12733041747205975,
+          "print": 1.7232091438218518,
+          "facebook": 2.7320503006001626,
+          "search": 2.567018503328198
+        },
+        "roi_low": {
+          "tv": 0.2229705204203039,
+          "ooh": -0.36008622573661186,
+          "print": -5.611208051300786,
+          "facebook": -10.924870027162093,
+          "search": -9.781061058117556
+        },
+        "roi_high": {
+          "tv": 6.528480121076793,
+          "ooh": 0.7349168269626701,
+          "print": 9.524001100261907,
+          "facebook": 19.08151442088646,
+          "search": 16.3533465797076
+        }
+      },
+      {
+        "seed": 118,
+        "failures": [],
+        "covered": {
+          "tv": false,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": -0.04716781948902097,
+          "ooh": 0.36714763560046176,
+          "print": -1.5040788533173728,
+          "facebook": 14.137438655065774,
+          "search": 21.448079035932757
+        },
+        "roi_low": {
+          "tv": -2.3427793992432946,
+          "ooh": -0.2426212409048575,
+          "print": -13.603967435427489,
+          "facebook": -4.574910367272576,
+          "search": 0.03769590563553273
+        },
+        "roi_high": {
+          "tv": 2.103804028860483,
+          "ooh": 1.0930906586299765,
+          "print": 7.058274607692865,
+          "facebook": 42.77950784855006,
+          "search": 46.8597442001836
+        }
+      },
+      {
+        "seed": 119,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": false,
+          "print": true,
+          "facebook": true,
+          "search": false
+        },
+        "roi_mean": {
+          "tv": 2.085957630451596,
+          "ooh": -0.23401082763501224,
+          "print": 5.712258746668538,
+          "facebook": 23.71501750906442,
+          "search": -11.982073778604805
+        },
+        "roi_low": {
+          "tv": -0.15195057754052485,
+          "ooh": -0.8608544426823533,
+          "print": -2.9671392928702187,
+          "facebook": -3.6532069427219156,
+          "search": -32.27063991370622
+        },
+        "roi_high": {
+          "tv": 5.115808818340876,
+          "ooh": 0.2716823000781481,
+          "print": 18.872526353096752,
+          "facebook": 52.77004696229434,
+          "search": 2.789115548728227
+        }
+      },
+      {
+        "seed": 120,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.4640236758901946,
+          "ooh": -0.018197023721173565,
+          "print": 6.013840591632491,
+          "facebook": -4.1436324510842475,
+          "search": 3.4265173162372538
+        },
+        "roi_low": {
+          "tv": -0.1329093836788849,
+          "ooh": -0.6130209310889728,
+          "print": -2.0035838150751974,
+          "facebook": -25.118853253687487,
+          "search": -10.079119999895967
+        },
+        "roi_high": {
+          "tv": 6.31971430348185,
+          "ooh": 0.5347181662557631,
+          "print": 18.255921648431535,
+          "facebook": 11.91217870805375,
+          "search": 19.636220586214904
+        }
+      },
+      {
+        "seed": 121,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.878837773745764,
+          "ooh": 0.23959827283140658,
+          "print": 6.8502472471249405,
+          "facebook": 6.281547683238433,
+          "search": -2.0755412878117165
+        },
+        "roi_low": {
+          "tv": -0.2839921125225506,
+          "ooh": -0.32967988560977335,
+          "print": -2.2216937627312414,
+          "facebook": -8.326532578648617,
+          "search": -16.321742168629605
+        },
+        "roi_high": {
+          "tv": 4.77839772067476,
+          "ooh": 1.104547641872008,
+          "print": 18.104220926550425,
+          "facebook": 24.933456138302624,
+          "search": 11.570751217158179
+        }
+      },
+      {
+        "seed": 122,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.0090895237146382,
+          "ooh": 0.6417340091535384,
+          "print": 5.010567775428512,
+          "facebook": 3.8659515777892772,
+          "search": 2.1412678483672773
+        },
+        "roi_low": {
+          "tv": -1.113017326796837,
+          "ooh": 0.0013715976779270667,
+          "print": -2.4391840584304947,
+          "facebook": -10.665627139936928,
+          "search": -10.422029565616999
+        },
+        "roi_high": {
+          "tv": 4.884765887941679,
+          "ooh": 1.387518099222539,
+          "print": 15.455466611989102,
+          "facebook": 21.22305884695579,
+          "search": 20.77149612418943
+        }
+      },
+      {
+        "seed": 123,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.3958316837159126,
+          "ooh": 0.2795834101881531,
+          "print": 1.8443784540422279,
+          "facebook": 2.7488684663333385,
+          "search": 2.3626084801938716
+        },
+        "roi_low": {
+          "tv": -0.05506915185623652,
+          "ooh": -0.24288609843808906,
+          "print": -6.197305579510234,
+          "facebook": -12.00763042044647,
+          "search": -12.276284452836975
+        },
+        "roi_high": {
+          "tv": 5.522724640909043,
+          "ooh": 0.9670354362202501,
+          "print": 11.181849666525638,
+          "facebook": 21.43511552241803,
+          "search": 16.804091389601762
+        }
+      },
+      {
+        "seed": 124,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.3150515367749436,
+          "ooh": 0.026289501717701315,
+          "print": 5.117373727053834,
+          "facebook": 12.315875945959748,
+          "search": 0.31588374999899294
+        },
+        "roi_low": {
+          "tv": -0.651150459178782,
+          "ooh": -0.49217771680141775,
+          "print": -2.8762500213438096,
+          "facebook": -5.36387388107319,
+          "search": -14.541544146799893
+        },
+        "roi_high": {
+          "tv": 4.533789419210514,
+          "ooh": 0.6883031988723453,
+          "print": 17.527133291404912,
+          "facebook": 37.77047425387513,
+          "search": 15.394354805214672
+        }
+      },
+      {
+        "seed": 125,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 5.726520595814101,
+          "ooh": 0.502090409271278,
+          "print": 5.408040701616867,
+          "facebook": 4.413250087057051,
+          "search": 4.6283143252145
+        },
+        "roi_low": {
+          "tv": 1.856060048133726,
+          "ooh": -0.12529067938403504,
+          "print": -2.851090794447018,
+          "facebook": -10.613610500870037,
+          "search": -8.055892684048471
+        },
+        "roi_high": {
+          "tv": 9.690346083106297,
+          "ooh": 1.3954076385174228,
+          "print": 16.970048207402684,
+          "facebook": 24.264808993246408,
+          "search": 20.009717884799105
+        }
+      },
+      {
+        "seed": 126,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.656152845433372,
+          "ooh": -0.07471451228278841,
+          "print": 11.044676943534885,
+          "facebook": -4.056530476024453,
+          "search": 4.415408536247085
+        },
+        "roi_low": {
+          "tv": -1.6361395575301367,
+          "ooh": -0.7664293085114147,
+          "print": -0.5844971189935199,
+          "facebook": -25.73258479252216,
+          "search": -10.733035498581756
+        },
+        "roi_high": {
+          "tv": 3.589348375753808,
+          "ooh": 0.571941432230655,
+          "print": 25.89249172366444,
+          "facebook": 14.621720213421955,
+          "search": 27.039829479959447
+        }
+      },
+      {
+        "seed": 127,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 5.697259001845771,
+          "ooh": 0.014537908104157747,
+          "print": 3.8169965465258264,
+          "facebook": 9.146487783588787,
+          "search": 9.643517695779137
+        },
+        "roi_low": {
+          "tv": 0.763169253992549,
+          "ooh": -0.5108195963633393,
+          "print": -3.923950906509399,
+          "facebook": -5.6593762598290684,
+          "search": -4.458585274766416
+        },
+        "roi_high": {
+          "tv": 10.036472577519243,
+          "ooh": 0.6927749865480418,
+          "print": 13.937816444869423,
+          "facebook": 29.589554769308652,
+          "search": 31.00930285495532
+        }
+      },
+      {
+        "seed": 128,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.8084204103367161,
+          "ooh": 0.5182434562241554,
+          "print": 5.429406173382769,
+          "facebook": 1.651825017357968,
+          "search": 2.798902949192671
+        },
+        "roi_low": {
+          "tv": -1.216330026346092,
+          "ooh": -0.16096252092016727,
+          "print": -3.7435055652451217,
+          "facebook": -20.161128591436942,
+          "search": -11.991738052910165
+        },
+        "roi_high": {
+          "tv": 3.884506767850782,
+          "ooh": 1.5657566501738414,
+          "print": 20.56436039640313,
+          "facebook": 19.108732880145656,
+          "search": 22.34668617531866
+        }
+      },
+      {
+        "seed": 129,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.558463603382182,
+          "ooh": 0.12606082577088326,
+          "print": 3.051227383680025,
+          "facebook": 2.586204990288487,
+          "search": 5.104342645123522
+        },
+        "roi_low": {
+          "tv": -0.028363187181050277,
+          "ooh": -0.4579625135219442,
+          "print": -5.230904023360597,
+          "facebook": -14.050032475967065,
+          "search": -8.434375432919968
+        },
+        "roi_high": {
+          "tv": 5.81759715272926,
+          "ooh": 0.9870305395958927,
+          "print": 14.838631759164643,
+          "facebook": 23.74461540252325,
+          "search": 23.950669697680908
+        }
+      },
+      {
+        "seed": 130,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.6546101118538046,
+          "ooh": 0.0022747285825018655,
+          "print": 11.97423549736883,
+          "facebook": 2.2344326355641653,
+          "search": 4.547473624262968
+        },
+        "roi_low": {
+          "tv": -0.5077449856383093,
+          "ooh": -0.5275265161665516,
+          "print": 2.9648382429873554,
+          "facebook": -13.367188253705423,
+          "search": -7.899288007493659
+        },
+        "roi_high": {
+          "tv": 5.199618188657439,
+          "ooh": 0.5562474931183334,
+          "print": 23.94241912635772,
+          "facebook": 20.887344239815953,
+          "search": 21.119471820578358
+        }
+      },
+      {
+        "seed": 131,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.8811934338719245,
+          "ooh": -0.100812785757792,
+          "print": 0.19447813323051047,
+          "facebook": 1.9705761904186252,
+          "search": 3.601859026348675
+        },
+        "roi_low": {
+          "tv": -0.2658181165832863,
+          "ooh": -0.7287709536144409,
+          "print": -7.84869381714395,
+          "facebook": -13.807731052326222,
+          "search": -9.324663762169552
+        },
+        "roi_high": {
+          "tv": 4.986314873677229,
+          "ooh": 0.42092502040941854,
+          "print": 9.431407643977547,
+          "facebook": 19.052584429962756,
+          "search": 17.19030618155067
+        }
+      },
+      {
+        "seed": 132,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.5029731793512933,
+          "ooh": -0.1185987875090959,
+          "print": 1.536822793663858,
+          "facebook": 23.508899060153865,
+          "search": 2.334068795686038
+        },
+        "roi_low": {
+          "tv": 0.17751025220760303,
+          "ooh": -0.689298030723852,
+          "print": -6.67126798816172,
+          "facebook": -1.592978493143421,
+          "search": -11.171238398204023
+        },
+        "roi_high": {
+          "tv": 5.447111077642949,
+          "ooh": 0.45722180222469555,
+          "print": 12.154940248059022,
+          "facebook": 52.158439211115116,
+          "search": 19.768947462829253
+        }
+      },
+      {
+        "seed": 133,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.0356945549586163,
+          "ooh": 0.14350319633988654,
+          "print": -1.0696876155780528,
+          "facebook": 7.009040725905345,
+          "search": -0.7558084784039409
+        },
+        "roi_low": {
+          "tv": 0.01289239994338543,
+          "ooh": -0.4158785010552149,
+          "print": -10.564300113186588,
+          "facebook": -8.742496571929772,
+          "search": -15.977177850261654
+        },
+        "roi_high": {
+          "tv": 6.536889359277745,
+          "ooh": 0.8350591450375894,
+          "print": 7.624604179440668,
+          "facebook": 32.20154744089648,
+          "search": 14.535429908835075
+        }
+      },
+      {
+        "seed": 134,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.4964350071234858,
+          "ooh": 0.32083042383271004,
+          "print": 7.844034330556812,
+          "facebook": 9.19247984806781,
+          "search": -2.2251216270878236
+        },
+        "roi_low": {
+          "tv": -0.6630059732649214,
+          "ooh": -0.20631957028671663,
+          "print": -0.2652619585684392,
+          "facebook": -7.8680656431252665,
+          "search": -23.14285242006064
+        },
+        "roi_high": {
+          "tv": 4.250314618808957,
+          "ooh": 1.132187833061462,
+          "print": 17.239641054878923,
+          "facebook": 35.473743411269304,
+          "search": 12.353993509323981
+        }
+      },
+      {
+        "seed": 135,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.601627148140623,
+          "ooh": 0.18524961788587924,
+          "print": 3.817371872286803,
+          "facebook": 1.3864930639124486,
+          "search": 1.888631972033501
+        },
+        "roi_low": {
+          "tv": 0.02991957313630502,
+          "ooh": -0.34657465672832155,
+          "print": -4.058041009605584,
+          "facebook": -14.034915854885966,
+          "search": -10.57611438775663
+        },
+        "roi_high": {
+          "tv": 5.769643701749807,
+          "ooh": 0.871744580503287,
+          "print": 13.6285401856397,
+          "facebook": 17.407482506738177,
+          "search": 19.098555856218965
+        }
+      },
+      {
+        "seed": 136,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.7067529807460997,
+          "ooh": 0.14873079036704262,
+          "print": 5.164588673777305,
+          "facebook": 4.29150484287222,
+          "search": -0.33302903538294437
+        },
+        "roi_low": {
+          "tv": 0.6771546395444324,
+          "ooh": -0.390183764844337,
+          "print": -2.7374856759599657,
+          "facebook": -11.299131467372671,
+          "search": -16.472747136139375
+        },
+        "roi_high": {
+          "tv": 7.509059089905261,
+          "ooh": 0.7458453436803943,
+          "print": 16.28004442652482,
+          "facebook": 21.96197138741288,
+          "search": 13.759797349641328
+        }
+      },
+      {
+        "seed": 137,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.383333629933115,
+          "ooh": 0.14344802209081406,
+          "print": 5.107943822570568,
+          "facebook": 3.5503482670433852,
+          "search": 0.8057377128458934
+        },
+        "roi_low": {
+          "tv": 0.046066763813906515,
+          "ooh": -0.494290973278689,
+          "print": -3.81444061738647,
+          "facebook": -13.8853003006917,
+          "search": -16.039028473102434
+        },
+        "roi_high": {
+          "tv": 9.173491378177077,
+          "ooh": 1.078563204822881,
+          "print": 17.78548460062763,
+          "facebook": 27.425940794279743,
+          "search": 28.497548936668316
+        }
+      },
+      {
+        "seed": 138,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.580559274114416,
+          "ooh": 0.11371303213109289,
+          "print": 7.247695135567104,
+          "facebook": -0.029030532215726226,
+          "search": 4.667918307960138
+        },
+        "roi_low": {
+          "tv": 1.2060807694704665,
+          "ooh": -0.4698113276541247,
+          "print": -1.6082275715759846,
+          "facebook": -17.155413108303883,
+          "search": -10.618860360314388
+        },
+        "roi_high": {
+          "tv": 8.940037319467521,
+          "ooh": 0.7565161737781233,
+          "print": 21.1408927447588,
+          "facebook": 19.483707903987145,
+          "search": 28.16992762559819
+        }
+      },
+      {
+        "seed": 139,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 5.2671906900519785,
+          "ooh": 0.4627873829367861,
+          "print": 1.8542494461055803,
+          "facebook": -0.13478801872612045,
+          "search": -7.6271946978087275
+        },
+        "roi_low": {
+          "tv": 1.2613895137315767,
+          "ooh": -0.14268341229172196,
+          "print": -6.0783703896863965,
+          "facebook": -16.368568179635034,
+          "search": -27.527463251649934
+        },
+        "roi_high": {
+          "tv": 9.60974723082157,
+          "ooh": 1.3046644210139038,
+          "print": 13.416321218701682,
+          "facebook": 19.47514417455724,
+          "search": 6.355740758244701
+        }
+      },
+      {
+        "seed": 140,
+        "failures": [],
+        "covered": {
+          "tv": false,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 5.569046659516087,
+          "ooh": -0.0010207580889326753,
+          "print": 4.416895018110422,
+          "facebook": 8.098168762985985,
+          "search": 9.142777306769906
+        },
+        "roi_low": {
+          "tv": 3.1220484704726315,
+          "ooh": -0.5620058078589651,
+          "print": -3.4053218975981197,
+          "facebook": -6.931083871970598,
+          "search": -3.5756126532344927
+        },
+        "roi_high": {
+          "tv": 8.544386150022174,
+          "ooh": 0.5470013032104025,
+          "print": 15.165332433189924,
+          "facebook": 29.659754654493607,
+          "search": 25.78697630046475
+        }
+      },
+      {
+        "seed": 141,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.800728645192874,
+          "ooh": 0.4614996709667654,
+          "print": 6.852671078573905,
+          "facebook": -7.716144156153301,
+          "search": 2.039558569204717
+        },
+        "roi_low": {
+          "tv": 0.6263672221697039,
+          "ooh": -0.1268508354383153,
+          "print": -3.921714994409361,
+          "facebook": -30.987667688895538,
+          "search": -13.040779178607817
+        },
+        "roi_high": {
+          "tv": 5.604848046384119,
+          "ooh": 1.2717424638478367,
+          "print": 25.70760590415049,
+          "facebook": 8.489868572643314,
+          "search": 18.934592290873344
+        }
+      },
+      {
+        "seed": 142,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.9861070053583862,
+          "ooh": 0.4210452362562487,
+          "print": 2.6188778611847874,
+          "facebook": 6.957108434359858,
+          "search": -3.9661769351288676
+        },
+        "roi_low": {
+          "tv": 0.03367403507208915,
+          "ooh": -0.1987994025910013,
+          "print": -8.626962260948352,
+          "facebook": -11.602926905323702,
+          "search": -20.80516323735226
+        },
+        "roi_high": {
+          "tv": 7.116922480337998,
+          "ooh": 1.3068459951953189,
+          "print": 12.299621687677188,
+          "facebook": 32.37214806552583,
+          "search": 12.144763981981727
+        }
+      },
+      {
+        "seed": 143,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.0435501828548035,
+          "ooh": 0.1522047930013245,
+          "print": 6.418229865009902,
+          "facebook": 1.9842497223087436,
+          "search": 6.090265087230017
+        },
+        "roi_low": {
+          "tv": -0.30522639243983546,
+          "ooh": -0.39319216641849614,
+          "print": -2.256122152462979,
+          "facebook": -14.793098346680365,
+          "search": -7.315688348429208
+        },
+        "roi_high": {
+          "tv": 5.680853490297628,
+          "ooh": 0.9004970307893496,
+          "print": 15.671135381802484,
+          "facebook": 19.867938528890885,
+          "search": 25.196787746549116
+        }
+      },
+      {
+        "seed": 144,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": false,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.0855702196573134,
+          "ooh": -0.3972784206449898,
+          "print": 6.139659260367928,
+          "facebook": 13.698438670380654,
+          "search": 4.600544355758812
+        },
+        "roi_low": {
+          "tv": -0.18918028664161177,
+          "ooh": -1.0091514757848843,
+          "print": -2.6828218230200083,
+          "facebook": -3.4432765566307366,
+          "search": -8.396868436985356
+        },
+        "roi_high": {
+          "tv": 5.286009534783119,
+          "ooh": 0.16028244586452622,
+          "print": 18.7233491575103,
+          "facebook": 34.887542077530185,
+          "search": 20.88140670001937
+        }
+      },
+      {
+        "seed": 145,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.568604152449908,
+          "ooh": 0.4394747233335202,
+          "print": 1.349272685469011,
+          "facebook": -2.614428697057986,
+          "search": -1.3906881788312817
+        },
+        "roi_low": {
+          "tv": 0.004188430903437461,
+          "ooh": -0.18238388198936353,
+          "print": -6.668014222709367,
+          "facebook": -19.753880811416813,
+          "search": -20.924741795177777
+        },
+        "roi_high": {
+          "tv": 6.2646414354448705,
+          "ooh": 1.4062184644218103,
+          "print": 13.305424682446585,
+          "facebook": 15.064712421789814,
+          "search": 13.021682552083028
+        }
+      },
+      {
+        "seed": 146,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.213405034991699,
+          "ooh": 0.33679615228786625,
+          "print": 3.9723041356550457,
+          "facebook": 6.487413693543064,
+          "search": 7.877866341933347
+        },
+        "roi_low": {
+          "tv": 0.45461904763517097,
+          "ooh": -0.2134753002733674,
+          "print": -3.9316215639894523,
+          "facebook": -9.05528217942152,
+          "search": -5.019660406292081
+        },
+        "roi_high": {
+          "tv": 6.678186438059323,
+          "ooh": 1.027528665836886,
+          "print": 15.017663193109923,
+          "facebook": 28.388358682006892,
+          "search": 27.02936087852375
+        }
+      },
+      {
+        "seed": 147,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.865799844508154,
+          "ooh": 0.43082999080071616,
+          "print": 2.8981294779917675,
+          "facebook": 2.1540444943083874,
+          "search": 1.2967889542542343
+        },
+        "roi_low": {
+          "tv": 0.5155952990307705,
+          "ooh": -0.23123446386951224,
+          "print": -5.759266448937718,
+          "facebook": -15.731682761723299,
+          "search": -13.355442851923808
+        },
+        "roi_high": {
+          "tv": 7.872569304434341,
+          "ooh": 1.4053553723370642,
+          "print": 14.18974238256332,
+          "facebook": 22.324487062366323,
+          "search": 18.576467697505006
+        }
+      },
+      {
+        "seed": 148,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": false,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.868549893123362,
+          "ooh": -0.013445076125065363,
+          "print": -7.122627810203241,
+          "facebook": -5.642372739684533,
+          "search": -7.6766622456057165
+        },
+        "roi_low": {
+          "tv": 1.1433216789468907,
+          "ooh": -0.6148702189973839,
+          "print": -22.238469755651657,
+          "facebook": -24.727293645413823,
+          "search": -23.104156026770298
+        },
+        "roi_high": {
+          "tv": 7.0844893940042875,
+          "ooh": 0.6169433201932744,
+          "print": 1.9750534471535408,
+          "facebook": 11.547326787880571,
+          "search": 7.618329246287514
+        }
+      },
+      {
+        "seed": 149,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": false,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.7471703857440954,
+          "ooh": 0.14342358831546118,
+          "print": 8.905676125757415,
+          "facebook": -17.133930011785573,
+          "search": -5.135306198075232
+        },
+        "roi_low": {
+          "tv": -0.02800252804873992,
+          "ooh": -0.3922776510952215,
+          "print": -0.5720432696396135,
+          "facebook": -41.326050029676665,
+          "search": -22.535295552143985
+        },
+        "roi_high": {
+          "tv": 6.339585844912089,
+          "ooh": 0.8514467823765229,
+          "print": 22.61622541322952,
+          "facebook": 1.3279287067601802,
+          "search": 9.349062791087261
+        }
+      },
+      {
+        "seed": 150,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.4775005225803692,
+          "ooh": -0.07404093548257427,
+          "print": -0.27720415209552174,
+          "facebook": -2.2585552470482764,
+          "search": 6.235849638703471
+        },
+        "roi_low": {
+          "tv": -0.6807751272968494,
+          "ooh": -0.757145798969961,
+          "print": -9.44894219994506,
+          "facebook": -19.0336165762731,
+          "search": -6.57472258636183
+        },
+        "roi_high": {
+          "tv": 5.0552189174198,
+          "ooh": 0.46276078096211076,
+          "print": 8.495172391519773,
+          "facebook": 12.903692553538045,
+          "search": 23.644640108695615
+        }
+      },
+      {
+        "seed": 151,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.528435298815271,
+          "ooh": 0.12448611415268303,
+          "print": 6.727340464060387,
+          "facebook": 0.7489687705665627,
+          "search": 8.519692634945537
+        },
+        "roi_low": {
+          "tv": 1.2301777001568992,
+          "ooh": -0.4318625614373547,
+          "print": -2.1109972425778207,
+          "facebook": -15.82331131608471,
+          "search": -7.938610500626683
+        },
+        "roi_high": {
+          "tv": 9.212133966277706,
+          "ooh": 0.8132991035295716,
+          "print": 20.510123694109357,
+          "facebook": 19.787319699813985,
+          "search": 35.85261603846941
+        }
+      },
+      {
+        "seed": 152,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.9494294083685086,
+          "ooh": 0.3437480910975143,
+          "print": 2.007960854286981,
+          "facebook": 11.489886035069631,
+          "search": -2.1093188057466996
+        },
+        "roi_low": {
+          "tv": 0.3096625611285188,
+          "ooh": -0.23374546840097635,
+          "print": -5.542859941082405,
+          "facebook": -4.920181408550279,
+          "search": -19.37424529583185
+        },
+        "roi_high": {
+          "tv": 6.166277449012774,
+          "ooh": 1.3066213754745448,
+          "print": 12.361555165501624,
+          "facebook": 35.163325843872,
+          "search": 11.796542481719117
+        }
+      },
+      {
+        "seed": 153,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.645011832662018,
+          "ooh": 0.4806449133470898,
+          "print": -0.6396917930080401,
+          "facebook": 1.437140864869381,
+          "search": -0.2943083510609925
+        },
+        "roi_low": {
+          "tv": -0.30345773306200857,
+          "ooh": -0.14747462564149438,
+          "print": -8.935871184090212,
+          "facebook": -14.98098249720499,
+          "search": -14.677530514952592
+        },
+        "roi_high": {
+          "tv": 4.148321855626156,
+          "ooh": 1.3908035318723562,
+          "print": 7.291628064747393,
+          "facebook": 16.98776089782303,
+          "search": 13.017643887799633
+        }
+      },
+      {
+        "seed": 154,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.383081237953206,
+          "ooh": 0.17629606346591523,
+          "print": 3.0164363430006214,
+          "facebook": 4.706398655011974,
+          "search": 1.159681080915167
+        },
+        "roi_low": {
+          "tv": -0.08189543060144663,
+          "ooh": -0.40364883724591005,
+          "print": -5.06976796983772,
+          "facebook": -11.616281148323036,
+          "search": -12.698373091304262
+        },
+        "roi_high": {
+          "tv": 5.678479427480708,
+          "ooh": 0.9836095483811422,
+          "print": 15.225801032851116,
+          "facebook": 21.97729996251859,
+          "search": 19.515548796620386
+        }
+      },
+      {
+        "seed": 155,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.5293330134796497,
+          "ooh": 0.47124377910731574,
+          "print": 8.171294854065312,
+          "facebook": 3.287282142459409,
+          "search": 1.3274499483318059
+        },
+        "roi_low": {
+          "tv": 1.0528969683235192,
+          "ooh": -0.11996796300911723,
+          "print": -2.5264740199751965,
+          "facebook": -13.251838126652824,
+          "search": -13.64981027732101
+        },
+        "roi_high": {
+          "tv": 6.916665537351363,
+          "ooh": 1.2118567447765098,
+          "print": 23.336728365439395,
+          "facebook": 24.794281762407074,
+          "search": 19.280021923252868
+        }
+      },
+      {
+        "seed": 156,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.6620282814666256,
+          "ooh": 0.27708659601935914,
+          "print": 7.257244589741323,
+          "facebook": -8.646333547282167,
+          "search": 3.0259519230967915
+        },
+        "roi_low": {
+          "tv": -0.21541374317324888,
+          "ooh": -0.2311195326732251,
+          "print": -1.7193849486895028,
+          "facebook": -28.56713953720852,
+          "search": -9.987483134675356
+        },
+        "roi_high": {
+          "tv": 4.441885189513532,
+          "ooh": 1.1199786039173283,
+          "print": 21.179774813367203,
+          "facebook": 6.623260881668085,
+          "search": 21.134184682017338
+        }
+      },
+      {
+        "seed": 157,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.8460793467016945,
+          "ooh": 0.16781395359630227,
+          "print": 10.892461994899218,
+          "facebook": 7.607768593420958,
+          "search": 2.4086352848872847
+        },
+        "roi_low": {
+          "tv": -0.1882735618892117,
+          "ooh": -0.4413977120006501,
+          "print": 1.0858522955202363,
+          "facebook": -8.32525141335128,
+          "search": -10.613960898745583
+        },
+        "roi_high": {
+          "tv": 4.411734977246042,
+          "ooh": 1.125384270024135,
+          "print": 22.584679216252955,
+          "facebook": 29.072285161538456,
+          "search": 18.074789509193963
+        }
+      },
+      {
+        "seed": 158,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.48858828981263,
+          "ooh": -0.09141782343145986,
+          "print": 3.938788092156191,
+          "facebook": 0.9871756717857773,
+          "search": -0.9438058851167077
+        },
+        "roi_low": {
+          "tv": -0.29700602133910076,
+          "ooh": -0.7358985812011921,
+          "print": -4.68280929204198,
+          "facebook": -15.255170006354623,
+          "search": -15.532142325182136
+        },
+        "roi_high": {
+          "tv": 6.331905114936478,
+          "ooh": 0.5039323403642935,
+          "print": 16.009354395977407,
+          "facebook": 18.152973089188304,
+          "search": 13.364578507537507
+        }
+      },
+      {
+        "seed": 159,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.8942704067875245,
+          "ooh": 0.12317031868287111,
+          "print": 6.003068076195346,
+          "facebook": 10.725680923525273,
+          "search": -9.597522675750485
+        },
+        "roi_low": {
+          "tv": -0.43290924805316555,
+          "ooh": -0.4098134043276054,
+          "print": -2.7056292211544575,
+          "facebook": -6.3724192354195255,
+          "search": -31.194529035456707
+        },
+        "roi_high": {
+          "tv": 5.390325819283536,
+          "ooh": 0.7341674294083618,
+          "print": 18.84364713458556,
+          "facebook": 36.30396679965655,
+          "search": 4.444220798677601
+        }
+      },
+      {
+        "seed": 160,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.4830384235321756,
+          "ooh": 0.07228335072451023,
+          "print": 8.00358126405126,
+          "facebook": -0.49909774076514896,
+          "search": -2.324272477861431
+        },
+        "roi_low": {
+          "tv": -0.8400862328702207,
+          "ooh": -0.5125051438631077,
+          "print": -3.6140948752979587,
+          "facebook": -17.02303404528568,
+          "search": -17.625120801623357
+        },
+        "roi_high": {
+          "tv": 5.487806916910159,
+          "ooh": 0.681533152399375,
+          "print": 27.58555581903165,
+          "facebook": 18.551928784703936,
+          "search": 14.003275923755695
+        }
+      },
+      {
+        "seed": 161,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.211660653431074,
+          "ooh": 0.13129211390331824,
+          "print": 3.264766194086283,
+          "facebook": 4.8908144739073744,
+          "search": -1.7192862074714694
+        },
+        "roi_low": {
+          "tv": -0.05964489731262399,
+          "ooh": -0.4198402124432132,
+          "print": -4.8623055994052855,
+          "facebook": -10.617405781913414,
+          "search": -18.074727579597436
+        },
+        "roi_high": {
+          "tv": 4.9823099731784835,
+          "ooh": 0.809840107794566,
+          "print": 14.56761335093374,
+          "facebook": 23.725347146532556,
+          "search": 11.899200236315963
+        }
+      },
+      {
+        "seed": 162,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.633413671234532,
+          "ooh": 0.1446557450167299,
+          "print": 11.332300911023424,
+          "facebook": -6.0179352298105915,
+          "search": 2.115512078509528
+        },
+        "roi_low": {
+          "tv": -0.22220075203589473,
+          "ooh": -0.32518189702958844,
+          "print": -0.24755210065592323,
+          "facebook": -23.26040823514523,
+          "search": -8.845200260413339
+        },
+        "roi_high": {
+          "tv": 4.358535455578017,
+          "ooh": 0.7209167349636666,
+          "print": 24.811000977395377,
+          "facebook": 6.770832821318834,
+          "search": 16.97411034502168
+        }
+      },
+      {
+        "seed": 163,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.4336760692300323,
+          "ooh": -0.012366254892440568,
+          "print": 12.881872776868681,
+          "facebook": 0.4303812319283041,
+          "search": -6.162057799323048
+        },
+        "roi_low": {
+          "tv": -0.500271088751051,
+          "ooh": -0.5931339005775892,
+          "print": 4.853859239199122,
+          "facebook": -17.574623396762348,
+          "search": -29.535636985009045
+        },
+        "roi_high": {
+          "tv": 4.010489524794082,
+          "ooh": 0.5307568941728237,
+          "print": 22.770877330385122,
+          "facebook": 16.778371097698898,
+          "search": 8.457628446731592
+        }
+      },
+      {
+        "seed": 164,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.997224201145259,
+          "ooh": 0.07440389801401003,
+          "print": 2.097419776881019,
+          "facebook": 4.966085995669062,
+          "search": -4.358089566707569
+        },
+        "roi_low": {
+          "tv": -1.0041588642026422,
+          "ooh": -0.5043650657239517,
+          "print": -6.0203876957899185,
+          "facebook": -10.567593277580604,
+          "search": -27.100649772678544
+        },
+        "roi_high": {
+          "tv": 4.174747685835201,
+          "ooh": 0.7855190598776013,
+          "print": 13.220393355402908,
+          "facebook": 24.44783042692804,
+          "search": 9.662692376682491
+        }
+      },
+      {
+        "seed": 165,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 5.044203554685853,
+          "ooh": -0.17314562591565086,
+          "print": -1.0685645322402304,
+          "facebook": -1.6906135983057284,
+          "search": -2.7869590764276873
+        },
+        "roi_low": {
+          "tv": 1.0095319764077741,
+          "ooh": -0.9698946925282788,
+          "print": -11.266873745051722,
+          "facebook": -22.13146313979081,
+          "search": -16.970886286686834
+        },
+        "roi_high": {
+          "tv": 9.467265278207545,
+          "ooh": 0.3904181297170305,
+          "print": 7.349771085694402,
+          "facebook": 15.076884941904229,
+          "search": 12.547771350104295
+        }
+      },
+      {
+        "seed": 166,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": false,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.24958192051795575,
+          "ooh": -0.5629401490202854,
+          "print": 7.580667531831146,
+          "facebook": 1.7578615423273765,
+          "search": 5.574001461035885
+        },
+        "roi_low": {
+          "tv": -1.6415439800625276,
+          "ooh": -1.5480133200481598,
+          "print": -1.4700805998203903,
+          "facebook": -15.18919166991352,
+          "search": -7.943128431241275
+        },
+        "roi_high": {
+          "tv": 2.5941098980957906,
+          "ooh": 0.10822727820297484,
+          "print": 20.339235351379394,
+          "facebook": 20.7324271051921,
+          "search": 23.208528725765976
+        }
+      },
+      {
+        "seed": 167,
+        "failures": [
+          "r_hat_max 1.010 is at or above 1.01."
+        ],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.464607740103759,
+          "ooh": 0.2297795048523688,
+          "print": 1.2428128405133299,
+          "facebook": 0.8953723921254008,
+          "search": -2.389693662853447
+        },
+        "roi_low": {
+          "tv": 0.7413484681058817,
+          "ooh": -0.2739998812887536,
+          "print": -6.8397016076513735,
+          "facebook": -15.674618465701881,
+          "search": -19.224576395948166
+        },
+        "roi_high": {
+          "tv": 4.441839543240233,
+          "ooh": 0.9215051468232597,
+          "print": 9.96331960183646,
+          "facebook": 17.399178186265853,
+          "search": 10.486456570143424
+        }
+      },
+      {
+        "seed": 168,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": false,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.913927237299188,
+          "ooh": -0.003647230360455781,
+          "print": -3.693893781259304,
+          "facebook": -0.44275033510186707,
+          "search": -2.661022689559197
+        },
+        "roi_low": {
+          "tv": 1.2553024338352554,
+          "ooh": -0.6287047041254265,
+          "print": -14.03343735782099,
+          "facebook": -18.620186667761047,
+          "search": -17.92251608224689
+        },
+        "roi_high": {
+          "tv": 8.964914972460962,
+          "ooh": 0.6332672823629282,
+          "print": 4.258338220295889,
+          "facebook": 16.897705870726785,
+          "search": 14.026227273570477
+        }
+      },
+      {
+        "seed": 169,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.7100979300305685,
+          "ooh": 0.13327618496489937,
+          "print": 1.8394602364866675,
+          "facebook": -1.4894976303668928,
+          "search": 7.298690684941707
+        },
+        "roi_low": {
+          "tv": -0.5579662842792289,
+          "ooh": -0.42810146064527244,
+          "print": -7.84946436662761,
+          "facebook": -19.36789156059102,
+          "search": -5.978802294618513
+        },
+        "roi_high": {
+          "tv": 5.6470916092448,
+          "ooh": 0.7759358785494433,
+          "print": 11.065758945134382,
+          "facebook": 15.179381575746278,
+          "search": 26.255844636805058
+        }
+      },
+      {
+        "seed": 170,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.3177916091327904,
+          "ooh": 0.20210934315671894,
+          "print": 1.4282898043007988,
+          "facebook": 2.59648584359689,
+          "search": -5.203987868778288
+        },
+        "roi_low": {
+          "tv": -0.7502905391357025,
+          "ooh": -0.3580532880183115,
+          "print": -7.654856979547988,
+          "facebook": -18.65010385028547,
+          "search": -22.111223028468665
+        },
+        "roi_high": {
+          "tv": 4.2030341096454835,
+          "ooh": 0.9942989165177464,
+          "print": 11.18148061092841,
+          "facebook": 20.462881131107856,
+          "search": 8.782983132604619
+        }
+      },
+      {
+        "seed": 171,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.1065486300782994,
+          "ooh": 0.12677685178723072,
+          "print": 4.499886751493674,
+          "facebook": -2.847138600229312,
+          "search": 5.848661826759819
+        },
+        "roi_low": {
+          "tv": -0.03983020845249655,
+          "ooh": -0.3939697932461668,
+          "print": -3.2356541638714793,
+          "facebook": -20.18162575220858,
+          "search": -7.409056858542196
+        },
+        "roi_high": {
+          "tv": 4.692696796976562,
+          "ooh": 0.8062495334033792,
+          "print": 15.424039322418011,
+          "facebook": 12.935856801312969,
+          "search": 21.654954201402106
+        }
+      },
+      {
+        "seed": 172,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.0108441719011667,
+          "ooh": 0.11803018169366399,
+          "print": -0.261088336043936,
+          "facebook": -0.4473679755051431,
+          "search": 5.306927611903452
+        },
+        "roi_low": {
+          "tv": -0.44987851931806244,
+          "ooh": -0.4287618156427023,
+          "print": -8.239483241333035,
+          "facebook": -16.289528884856832,
+          "search": -6.789934439232474
+        },
+        "roi_high": {
+          "tv": 5.402183403418707,
+          "ooh": 0.9133141711791998,
+          "print": 8.383340122885302,
+          "facebook": 15.605318423463652,
+          "search": 24.228732635713694
+        }
+      },
+      {
+        "seed": 173,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.8233708668698946,
+          "ooh": 0.0940409174924964,
+          "print": 2.840412562560541,
+          "facebook": 0.8938734270810497,
+          "search": 19.993844618752394
+        },
+        "roi_low": {
+          "tv": -1.2536291126633108,
+          "ooh": -0.5061148187310255,
+          "print": -6.17615662394238,
+          "facebook": -16.604867442277836,
+          "search": 2.4341376752061614
+        },
+        "roi_high": {
+          "tv": 3.9744243344394743,
+          "ooh": 0.7824183492562741,
+          "print": 13.76318390971068,
+          "facebook": 21.123593461927864,
+          "search": 40.53557358805468
+        }
+      },
+      {
+        "seed": 174,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.214119716345354,
+          "ooh": 0.3337079941733168,
+          "print": 5.525919630483082,
+          "facebook": -6.971204174895418,
+          "search": 0.5899714566710045
+        },
+        "roi_low": {
+          "tv": 0.9900093896800871,
+          "ooh": -0.2128439537335011,
+          "print": -2.963293992995105,
+          "facebook": -25.579983780612544,
+          "search": -14.068457325165305
+        },
+        "roi_high": {
+          "tv": 8.51752545632583,
+          "ooh": 1.1307725366088472,
+          "print": 15.942079412928535,
+          "facebook": 8.536867311100362,
+          "search": 16.316764008806192
+        }
+      },
+      {
+        "seed": 175,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.2341851120237592,
+          "ooh": 0.25013880290779794,
+          "print": 7.250258556181962,
+          "facebook": 3.2739856922148607,
+          "search": -6.53591643589177
+        },
+        "roi_low": {
+          "tv": -0.8802545037298616,
+          "ooh": -0.37849066297563605,
+          "print": -2.118322591234449,
+          "facebook": -15.197384668244204,
+          "search": -35.11075346578042
+        },
+        "roi_high": {
+          "tv": 4.060702650570656,
+          "ooh": 1.077323869206022,
+          "print": 19.696176902633923,
+          "facebook": 24.042715152140392,
+          "search": 10.315895283099646
+        }
+      },
+      {
+        "seed": 176,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.255851794977724,
+          "ooh": -0.04099459769944487,
+          "print": 3.9464658706043148,
+          "facebook": 4.690232538410743,
+          "search": 0.7484644633791115
+        },
+        "roi_low": {
+          "tv": 0.007202165348297802,
+          "ooh": -0.6441096090131914,
+          "print": -3.8537924558201047,
+          "facebook": -10.607496957491302,
+          "search": -12.757683033823309
+        },
+        "roi_high": {
+          "tv": 5.073645084250689,
+          "ooh": 0.5121516212775388,
+          "print": 14.864326034714322,
+          "facebook": 23.22606544647636,
+          "search": 17.418879608857242
+        }
+      },
+      {
+        "seed": 177,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.2493200191335947,
+          "ooh": 0.35258215999305675,
+          "print": 4.014564787026664,
+          "facebook": 1.3186507909770113,
+          "search": -8.640675399557887
+        },
+        "roi_low": {
+          "tv": -0.08313484931181596,
+          "ooh": -0.2211856739064003,
+          "print": -4.101626628607402,
+          "facebook": -17.77738236789734,
+          "search": -29.237957340660284
+        },
+        "roi_high": {
+          "tv": 7.649530897101985,
+          "ooh": 1.1720080665615005,
+          "print": 14.183128990933145,
+          "facebook": 19.088879403877023,
+          "search": 4.843718391250339
+        }
+      },
+      {
+        "seed": 178,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.7304037345764218,
+          "ooh": 0.23390734552829695,
+          "print": -1.8577190698677504,
+          "facebook": 9.039133464018901,
+          "search": 5.237458796171742
+        },
+        "roi_low": {
+          "tv": -0.4423503074410588,
+          "ooh": -0.2981485495130698,
+          "print": -13.113446128598774,
+          "facebook": -8.04749224873648,
+          "search": -8.208433875800784
+        },
+        "roi_high": {
+          "tv": 4.465518895774831,
+          "ooh": 0.9636168371080848,
+          "print": 6.286225333592212,
+          "facebook": 36.18677967491168,
+          "search": 21.760324562656336
+        }
+      },
+      {
+        "seed": 179,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": false,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.5963945753562263,
+          "ooh": -0.2815653024677094,
+          "print": 8.872485995384944,
+          "facebook": 6.315310037463683,
+          "search": 9.290121007403767
+        },
+        "roi_low": {
+          "tv": 0.49257238435778616,
+          "ooh": -0.9155783819726974,
+          "print": -1.4394676756992872,
+          "facebook": -9.453907749030705,
+          "search": -3.387764680477125
+        },
+        "roi_high": {
+          "tv": 5.050277058500112,
+          "ooh": 0.2545655537383411,
+          "print": 25.076201723199077,
+          "facebook": 29.909410462120075,
+          "search": 21.736996735192744
+        }
+      },
+      {
+        "seed": 180,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.12476458633887,
+          "ooh": 0.05767291717560654,
+          "print": 4.699873279598423,
+          "facebook": -1.7468791133539752,
+          "search": 1.394634629958734
+        },
+        "roi_low": {
+          "tv": -0.8069530374537206,
+          "ooh": -0.4729116308069444,
+          "print": -2.8099126230589877,
+          "facebook": -17.593777724714997,
+          "search": -13.533280335900821
+        },
+        "roi_high": {
+          "tv": 4.0163670837279755,
+          "ooh": 0.7376264100673773,
+          "print": 15.196816634825936,
+          "facebook": 17.20328432070794,
+          "search": 21.78062636345639
+        }
+      },
+      {
+        "seed": 181,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.8096166181807822,
+          "ooh": 0.06296647408161903,
+          "print": 11.301196418780789,
+          "facebook": 9.958259727772427,
+          "search": -4.608719147527514
+        },
+        "roi_low": {
+          "tv": 0.501188257307748,
+          "ooh": -0.48877607679436214,
+          "print": -0.7401943159082907,
+          "facebook": -5.861487955560273,
+          "search": -21.769876702464238
+        },
+        "roi_high": {
+          "tv": 5.758353184891392,
+          "ooh": 0.7149836925203654,
+          "print": 28.795043907317837,
+          "facebook": 33.862047241836834,
+          "search": 9.438637724198951
+        }
+      },
+      {
+        "seed": 182,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.3392852391705916,
+          "ooh": -0.006311766962388141,
+          "print": 4.4149583875780625,
+          "facebook": -6.9691737301247105,
+          "search": -3.005892000857848
+        },
+        "roi_low": {
+          "tv": -0.2805975775022382,
+          "ooh": -0.667063758472892,
+          "print": -4.1176134255688455,
+          "facebook": -28.46618866663215,
+          "search": -20.22006566924021
+        },
+        "roi_high": {
+          "tv": 6.27079393234648,
+          "ooh": 0.5661787776357184,
+          "print": 13.733545749300506,
+          "facebook": 8.382921870222416,
+          "search": 11.200510019681158
+        }
+      },
+      {
+        "seed": 183,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.3406257955590426,
+          "ooh": -0.19571023295612858,
+          "print": 2.8790032665018934,
+          "facebook": 1.0469008472142942,
+          "search": -0.6294578245164972
+        },
+        "roi_low": {
+          "tv": -0.6530435281087685,
+          "ooh": -0.775960524854403,
+          "print": -5.433244016311968,
+          "facebook": -18.538082489536652,
+          "search": -15.201058748976134
+        },
+        "roi_high": {
+          "tv": 4.638655219615969,
+          "ooh": 0.39973023022266896,
+          "print": 12.83338459134936,
+          "facebook": 18.771029726426224,
+          "search": 15.469258124459753
+        }
+      },
+      {
+        "seed": 184,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.2476666663925888,
+          "ooh": -0.04994695893522409,
+          "print": -0.2809309812274984,
+          "facebook": 1.4282001515126785,
+          "search": 5.559266540889409
+        },
+        "roi_low": {
+          "tv": -0.7694388134184477,
+          "ooh": -0.6606983249081624,
+          "print": -9.21438238012194,
+          "facebook": -15.423075761252916,
+          "search": -11.0229095431229
+        },
+        "roi_high": {
+          "tv": 4.397682805676243,
+          "ooh": 0.5777209363768789,
+          "print": 8.42583366586699,
+          "facebook": 20.53907572706667,
+          "search": 31.467073843206105
+        }
+      },
+      {
+        "seed": 185,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.9428910562018356,
+          "ooh": -0.08852311782354595,
+          "print": 0.6831028471199203,
+          "facebook": -8.364570633074408,
+          "search": 0.2702498134471795
+        },
+        "roi_low": {
+          "tv": 0.006191839017061306,
+          "ooh": -0.7743572559469242,
+          "print": -8.1986391743059,
+          "facebook": -30.80248473367703,
+          "search": -17.97460283612883
+        },
+        "roi_high": {
+          "tv": 6.976110318877314,
+          "ooh": 0.5215774358686767,
+          "print": 11.007736348153765,
+          "facebook": 8.236858034870677,
+          "search": 15.51663107223865
+        }
+      },
+      {
+        "seed": 186,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.1948171091506894,
+          "ooh": 0.07505228472780492,
+          "print": 0.2680852476222116,
+          "facebook": 1.8684599454239168,
+          "search": -2.457934074312023
+        },
+        "roi_low": {
+          "tv": -0.032782546283701364,
+          "ooh": -0.46973421358704415,
+          "print": -8.297899352843709,
+          "facebook": -12.693967677434136,
+          "search": -18.617045872682446
+        },
+        "roi_high": {
+          "tv": 4.75470114840198,
+          "ooh": 0.6786162399735968,
+          "print": 8.99084974962429,
+          "facebook": 18.958125500072754,
+          "search": 10.41384680466632
+        }
+      },
+      {
+        "seed": 187,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.538633093574628,
+          "ooh": 0.1831309202091639,
+          "print": 7.845432703320222,
+          "facebook": 1.9631887218805042,
+          "search": 2.673539373704549
+        },
+        "roi_low": {
+          "tv": -0.3256271424101511,
+          "ooh": -0.41763980289055863,
+          "print": -1.6397989613661417,
+          "facebook": -16.075584567946215,
+          "search": -14.377623474051529
+        },
+        "roi_high": {
+          "tv": 8.959125510849724,
+          "ooh": 1.07722811004298,
+          "print": 21.69724876274783,
+          "facebook": 21.15625055237132,
+          "search": 18.93851062073666
+        }
+      },
+      {
+        "seed": 188,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.538511935328101,
+          "ooh": -0.09863608373324204,
+          "print": 3.939724099454995,
+          "facebook": 3.891020265864102,
+          "search": -3.9676527399527393
+        },
+        "roi_low": {
+          "tv": 1.7985683775393788,
+          "ooh": -0.6943271900177362,
+          "print": -4.041984561028429,
+          "facebook": -10.960782284228353,
+          "search": -21.759097088492986
+        },
+        "roi_high": {
+          "tv": 7.792193402825421,
+          "ooh": 0.4337088470085495,
+          "print": 12.646542482918091,
+          "facebook": 22.824974400666072,
+          "search": 8.894704531792515
+        }
+      },
+      {
+        "seed": 189,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.423596356232244,
+          "ooh": 0.3042334093443701,
+          "print": -1.9382885344326366,
+          "facebook": 5.0984505192900205,
+          "search": -1.8834370042112327
+        },
+        "roi_low": {
+          "tv": -0.6360490331646046,
+          "ooh": -0.2566957949196133,
+          "print": -12.390019752316695,
+          "facebook": -13.212914179658643,
+          "search": -17.360414583651565
+        },
+        "roi_high": {
+          "tv": 4.279427519352385,
+          "ooh": 0.9590135743984819,
+          "print": 6.205096454735627,
+          "facebook": 33.12647934243448,
+          "search": 12.462582045258271
+        }
+      },
+      {
+        "seed": 190,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 2.2204082434774746,
+          "ooh": 0.2357064464027909,
+          "print": 1.5427775654903528,
+          "facebook": 7.009176518210032,
+          "search": -9.243599257196747
+        },
+        "roi_low": {
+          "tv": -0.010262920640582242,
+          "ooh": -0.328513574000169,
+          "print": -7.140975090601499,
+          "facebook": -8.795672386220062,
+          "search": -26.451118358820196
+        },
+        "roi_high": {
+          "tv": 5.195997360658165,
+          "ooh": 1.010947419960959,
+          "print": 11.203049356949242,
+          "facebook": 27.7769876551998,
+          "search": 4.941782379841467
+        }
+      },
+      {
+        "seed": 191,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": false,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.9602352153271063,
+          "ooh": -0.06372345625398311,
+          "print": -2.986119600779507,
+          "facebook": 13.313596279344429,
+          "search": 8.745879023903418
+        },
+        "roi_low": {
+          "tv": -0.8493727498137426,
+          "ooh": -0.5954238272885526,
+          "print": -12.871528833296663,
+          "facebook": -3.1107004902979676,
+          "search": -4.162685658733556
+        },
+        "roi_high": {
+          "tv": 3.7772783288840706,
+          "ooh": 0.5332561300386108,
+          "print": 3.89749366656843,
+          "facebook": 33.80744046325627,
+          "search": 25.876668625895366
+        }
+      },
+      {
+        "seed": 192,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.8093648755633935,
+          "ooh": -0.08764841689969127,
+          "print": 2.986867263057375,
+          "facebook": 5.156204088363249,
+          "search": -0.779525772948946
+        },
+        "roi_low": {
+          "tv": -0.3678999742007062,
+          "ooh": -0.716423465424999,
+          "print": -5.160727521791178,
+          "facebook": -10.849681060679469,
+          "search": -15.972566856321963
+        },
+        "roi_high": {
+          "tv": 4.503256556784893,
+          "ooh": 0.48639956979447324,
+          "print": 14.921197207878365,
+          "facebook": 29.621772003109836,
+          "search": 13.508803851242433
+        }
+      },
+      {
+        "seed": 193,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.9068493083351645,
+          "ooh": 0.1905583861796717,
+          "print": 17.15252302203102,
+          "facebook": -3.38072772434324,
+          "search": 0.9648897500782527
+        },
+        "roi_low": {
+          "tv": -1.0792628046257429,
+          "ooh": -0.3774647726394276,
+          "print": 3.0771402977250877,
+          "facebook": -22.780569191766187,
+          "search": -14.8418576697186
+        },
+        "roi_high": {
+          "tv": 3.7329702236494917,
+          "ooh": 0.8857335015141534,
+          "print": 32.87900399564282,
+          "facebook": 13.226434459707114,
+          "search": 16.403824046995815
+        }
+      },
+      {
+        "seed": 194,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 3.272489949920427,
+          "ooh": 0.4601497063604906,
+          "print": 1.325789782521213,
+          "facebook": 5.421476421607089,
+          "search": 0.13096925149230082
+        },
+        "roi_low": {
+          "tv": 0.6600743538435487,
+          "ooh": -0.2630616776080125,
+          "print": -8.87644521783652,
+          "facebook": -12.482977577631788,
+          "search": -16.141011880776336
+        },
+        "roi_high": {
+          "tv": 6.254375473548565,
+          "ooh": 1.673743363883029,
+          "print": 12.00277690530719,
+          "facebook": 29.024107476778486,
+          "search": 20.496502538256973
+        }
+      },
+      {
+        "seed": 195,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 0.8615921294001195,
+          "ooh": 0.09015958143482138,
+          "print": 4.8178453040247895,
+          "facebook": 2.231550575053425,
+          "search": 4.19973284259144
+        },
+        "roi_low": {
+          "tv": -1.1220117141642052,
+          "ooh": -0.44603913976761933,
+          "print": -3.309631258242416,
+          "facebook": -13.363021259464034,
+          "search": -7.6858967776205365
+        },
+        "roi_high": {
+          "tv": 3.114852863483577,
+          "ooh": 0.6893323419347495,
+          "print": 16.233933735887344,
+          "facebook": 23.315666644284356,
+          "search": 20.439067856688215
+        }
+      },
+      {
+        "seed": 196,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.0616035950756535,
+          "ooh": 0.0910205289360348,
+          "print": -1.699367696446043,
+          "facebook": 12.292020073504567,
+          "search": 7.360491208206613
+        },
+        "roi_low": {
+          "tv": 1.9649301892955393,
+          "ooh": -0.4748161791943638,
+          "print": -11.308760376761821,
+          "facebook": -3.7151600247252325,
+          "search": -6.097402555849571
+        },
+        "roi_high": {
+          "tv": 6.783575555517925,
+          "ooh": 0.7351342378688883,
+          "print": 6.240290504856358,
+          "facebook": 34.55340479588226,
+          "search": 25.905304669470517
+        }
+      },
+      {
+        "seed": 197,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.2970744195152497,
+          "ooh": 0.2644303248803585,
+          "print": 0.3589099837461715,
+          "facebook": 9.71897750311258,
+          "search": 7.465740054694501
+        },
+        "roi_low": {
+          "tv": -0.6541829143588964,
+          "ooh": -0.27313417796267403,
+          "print": -10.06153263997205,
+          "facebook": -8.873812763424953,
+          "search": -5.908685242853926
+        },
+        "roi_high": {
+          "tv": 4.034608824743336,
+          "ooh": 1.0292850950411436,
+          "print": 8.853694946621285,
+          "facebook": 27.307746574461735,
+          "search": 26.57831648901756
+        }
+      },
+      {
+        "seed": 198,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 1.2154095219958194,
+          "ooh": -0.047954553881640355,
+          "print": -0.7462615224465416,
+          "facebook": 12.43576028650887,
+          "search": 13.164742090163548
+        },
+        "roi_low": {
+          "tv": -0.7807839851655445,
+          "ooh": -0.6592199566133972,
+          "print": -8.68346318498939,
+          "facebook": -6.255004875133653,
+          "search": -1.384037255009741
+        },
+        "roi_high": {
+          "tv": 3.8903788326852538,
+          "ooh": 0.5234866997626019,
+          "print": 8.856050929231731,
+          "facebook": 40.36446092916307,
+          "search": 31.860184790312665
+        }
+      },
+      {
+        "seed": 199,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.459344198359103,
+          "ooh": 0.11162073727034261,
+          "print": 7.029641738532746,
+          "facebook": 2.9815467984671913,
+          "search": 6.438072652736712
+        },
+        "roi_low": {
+          "tv": 0.8485290557253536,
+          "ooh": -0.5352173919379849,
+          "print": -2.417702447148339,
+          "facebook": -14.184510128181701,
+          "search": -8.336813729278704
+        },
+        "roi_high": {
+          "tv": 8.67659973201741,
+          "ooh": 0.7769584840372014,
+          "print": 21.47982486072948,
+          "facebook": 26.148467723510187,
+          "search": 25.799159960799713
+        }
+      },
+      {
+        "seed": 200,
+        "failures": [],
+        "covered": {
+          "tv": true,
+          "ooh": true,
+          "print": true,
+          "facebook": true,
+          "search": true
+        },
+        "roi_mean": {
+          "tv": 4.426247741867522,
+          "ooh": 0.07610145341194775,
+          "print": 0.46725059277230935,
+          "facebook": 5.282230633662322,
+          "search": 3.057140248062247
+        },
+        "roi_low": {
+          "tv": 1.7183869894871533,
+          "ooh": -0.5003966136236607,
+          "print": -7.424972016431836,
+          "facebook": -10.474213279402749,
+          "search": -10.722964806352728
+        },
+        "roi_high": {
+          "tv": 7.538783008771128,
+          "ooh": 0.6588377304455765,
+          "print": 10.581027716778596,
+          "facebook": 26.312795096807452,
+          "search": 17.322066644556198
+        }
+      }
+    ],
+    "coverage": {
+      "facebook": 0.9797979797979798,
+      "ooh": 0.9595959595959596,
+      "print": 0.9696969696969697,
+      "search": 0.98989898989899,
+      "tv": 0.9494949494949495
+    },
+    "coverage_se": {
+      "facebook": 0.014139956489073893,
+      "ooh": 0.019789690695126563,
+      "print": 0.017228340715604876,
+      "search": 0.01004986541743616,
+      "tv": 0.022008788505965778
+    },
+    "mean_bias": {
+      "tv": -0.05010776445779097,
+      "ooh": -0.186153291354123,
+      "print": -1.7749950898747269,
+      "facebook": -2.5369997176160535,
+      "search": -1.8608082655099365
+    }
+  },
+  "rho": 0.004685446662018911,
+  "residuals": {
+    "structural_acf": [
+      -0.03622903714298222,
+      0.0659998135252618,
+      -0.10542948059663225,
+      -0.03198685935006463
+    ],
+    "structural_ljung_box": {
+      "statistic": 3.645655395649368,
+      "dof": 4,
+      "p_value": 0.45607929796187835
+    },
+    "innovation_acf": [
+      -0.04195946111343158,
+      0.06694574253713141,
+      -0.10629451186909879,
+      -0.02476015733014221
+    ],
+    "innovation_ljung_box": {
+      "statistic": 3.697158115204362,
+      "dof": 3,
+      "p_value": 0.2960771142414734
+    }
+  },
+  "channel_contraction": {
+    "tv": 0.9384582479790166,
+    "ooh": 0.8722143139488913,
+    "print": 0.9413165658446954,
+    "facebook": 0.9358839131352341,
+    "search": 0.8810145058184524
+  },
+  "lift_test": {
+    "channel": "search",
+    "priority": 2.303853830268711,
+    "spend_share": 0.0790826463677732,
+    "weekly_spend": 5615.133333333332,
+    "expected_roi": 3.4438181636282352,
+    "weeks": {
+      "0.1": 176914,
+      "0.25": 28307,
+      "0.5": 7077
+    }
+  },
+  "memo": "Which paid channels earn back the next ruble at observed spend?\n\nEstimand\nMarginal ROI of one extra ruble at observed weekly spend, spend-weighted across training weeks whose full adstock horizon sits inside the series. The point is the mean of that derivative across posterior draws. The interval is the 2.5th to 97.5th percentile of the same draws. The media coefficient prior is normal and centered at zero, so contribution can be negative. The model controls for a linear trend and two yearly harmonics and carries AR(1) errors. A channel whose 95% interval sits entirely above or below 1 is reported as an interval fact. Recovery coverage and mean bias are diagnostics on a misspecified response. This national weekly series does not identify the mix, so no channel is scaled or cut. Average contribution over total spend is not this estimand.\n\nHoldout\nModel MAPE 0.038. Training-mean MAPE 0.270. Lag-52 MAPE 0.125. The 0.5 MAPE gate is a sanity check that this series passes easily. Forecast accuracy does not validate a channel ROI.\nBacktest on non-overlapping eight-week windows, each fit only on the weeks before it. The model beats the lag-52 forecast in 3 of 3 windows. It checks the forecast and does not award a label.\n- holdout from 2019-09-23: model MAPE 0.038, training-mean 0.270, lag-52 0.125.\n- holdout from 2019-07-29: model MAPE 0.056, training-mean 0.184, lag-52 0.082.\n- holdout from 2019-06-03: model MAPE 0.081, training-mean 1.057, lag-52 0.176.\n\nErrors\nThe model carries AR(1) errors with rho 0.00 (95% interval -0.17 to 0.18). Autocorrelation of the structural errors at lags 1 to 4: -0.04, +0.07, -0.11, -0.03 (Ljung-Box p 0.456). After the AR(1) term: -0.04, +0.07, -0.11, -0.02 (p 0.296). The rho interval includes 0 and the residuals show no autocorrelation, so the intervals are not narrowed by correlated weeks.\n\nChannels\nAn interval entirely below 1 or entirely above 1 is an interval fact. A point below that line whose interval includes it is not a cut. Recovery coverage of at least 90% and the mean bias are diagnostics on a misspecified response; they do not license a budget label. This national weekly series does not identify the mix, so no channel is scaled or cut. Prior contraction is one minus the posterior over the prior variance of the marginal ROI itself, with the prior from prior predictive draws; near zero means the data barely moved the prior. Channels are reported at 95% each, without a family-wise correction. This is one fit on one public series, not a budget optimizer.\n- print: ROI 7.08 (95% interval -0.28 to 15.33), prior contraction 0.94. Payback is not settled and the channel is not cut.\n- facebook: ROI 6.29 (95% interval -9.76 to 24.26), prior contraction 0.94. Payback is not settled and the channel is not cut.\n- tv: ROI 3.73 (95% interval 2.36 to 5.51), prior contraction 0.94. The interval is above 1 on this fit; recovery coverage is 95%, mean bias -0.05 under the Hill truth (true 2.46). That is not a mix move.\n- search: ROI 3.44 (95% interval -9.53 to 19.60), prior contraction 0.88. Payback is not settled and the channel is not cut.\n- ooh: ROI 0.39 (95% interval -0.23 to 1.23), prior contraction 0.87. Payback is not settled and the channel is not cut.\nContraction is at least 0.5 for every channel.\n\nPrior check\nEvery media prior 2 times as wide moves ROI by facebook +12%, ooh +15%, print +6%, search +18%, tv +2%. Every move is inside the 25% check.\n\nControl check\nWithout competitor_sales_B as a control, ROI moves print 7.08 to 8.34, facebook 6.29 to 12.73, tv 3.73 to 3.96, search 3.44 to 11.28, ooh 0.39 to 0.13. That control is market demand, so part of what it absorbs may be media. This check does not decide.\n\nRecovery check.\nRevenue simulated 100 times from a delayed adstock and a Hill saturation that the model cannot represent, with AR(1) noise, and refit. 99 refits cleared the QA gate. The 95% interval held the true marginal ROI in: facebook 98% (Monte Carlo standard error 1%, true 5.55, mean bias -2.54), ooh 96% (Monte Carlo standard error 2%, true 0.31, mean bias -0.19), print 97% (Monte Carlo standard error 2%, true 6.19, mean bias -1.77), search 99% (Monte Carlo standard error 1%, true 3.47, mean bias -1.86), tv 95% (Monte Carlo standard error 2%, true 2.46, mean bias -0.05). No channel is more than two standard errors under 95%.\n\nNo feasible lift test on the available units.\nThe highest-value unsettled channel is search: 8% of spend and a 95% interval from -9.53 to 19.60, the highest spend share times interval width among channels whose interval contains 1. To exclude payback if the true ROI is the current point 3.44, raised-spend weeks against baseline weeks need: +10% spend: 176914 weeks per arm; +25% spend: 28307 weeks per arm; +50% spend: 7077 weeks per arm. That ignores carryover and saturation, so it is a lower bound on duration. Even the shortest is more than 52 weeks, so a national test over time cannot settle search. The geo case in this package tests a different tactic and does not calibrate this model.\nOn the planning-proxy geo panel no design reached 80% power at the current search point ROI 3.44. That panel is simulated and no cell is a test to run.\n\nWhat would overturn this\nA series that identifies the channel returns, or a feasible lift test that settles payback. The numbers are from this public weekly series."
+}

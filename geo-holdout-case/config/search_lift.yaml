@@ -1,0 +1,15 @@
+channel: search
+spend_column: search_S
+holdout_weeks: 8
+point_roi: 3.4438181636282352
+spend_to_revenue: 0.003126496003601964
+increases: [0.5, 1.0, 2.0]
+durations_days: [28, 42, 56]
+n_draws: 200
+n_reassignments: 500
+seed: 20241014
+pre_days: 28
+stratum_size: 10
+treated_per_stratum: 5
+treated_group: 2
+note: planning proxy, noise from a simulated public geo panel

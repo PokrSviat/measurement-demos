@@ -1,0 +1,36 @@
+version: 5
+estimand: Cumulative incremental sales from the first test day through the last day after the test, from a CUPED difference with one vote per geo, scaled by the observed treated location-days in that window. Sales pulled forward from the weeks after the test lower this total. DiD does not decide.
+history: Version 5 was written after the version 4 read of this panel, including its slope test, had been seen. It is a plan fixed after exploration on the same data, not one fixed before any data were seen. Its protection is the decision power and blind check of the whole two-stage rule below, run on effects whose true cost is known.
+window:
+  test_start: "2015-02-16"
+  test_end: "2015-03-15"
+  end: "2015-04-07"
+rule:
+  bound: randomization lower bound of the cumulative total
+  level: 0.95
+  max_cost_per_incremental: 0.5
+  shape_switch:
+    test: stratified randomization slope of the effect per geo-day on log pre-test sales
+    alpha: 0.05
+    proportional: hypotheses spread in proportion to pre-period sales
+    additive: hypotheses spread equally per treated location-day
+  note: The cap means incremental sales must be at least twice the test spend. It is a planning assumption for this public case, not an employer budget. The test cost is the observed advertising cost in the cumulative window.
+interval:
+  n_reassignments: 2000
+  seed: 20241008
+  test_window_seed: 20241009
+  without_largest_seed: 20241010
+validation:
+  true_costs: [0.25, 0.4, 0.5, 0.6]
+  n_draws: 300
+  n_reassignments: 500
+  n_slope_reassignments: 500
+  seed: 20241011
+blind:
+  n_panels: 200
+  n_reassignments: 500
+  n_slope_reassignments: 500
+  seed: 20241012
+tail:
+  n_reassignments: 2000
+  seed: 20241013

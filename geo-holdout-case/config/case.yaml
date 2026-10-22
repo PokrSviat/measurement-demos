@@ -1,0 +1,9 @@
+author: Sviatoslav Pokrovskii
+question: Should this tactic be scaled after the geo experiment?
+assignment:
+  mechanism: stratified_fixed_count
+  volume: pretest_sales
+  stratum_size: 10
+  treated_per_stratum: 5
+  n_markets: 50
+  treated_group: 2

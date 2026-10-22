@@ -1,0 +1,27 @@
+[project]
+name = "measurement-framework"
+version = "0.1.0"
+description = "SQL measurement framework and a Bayesian revenue model. The mix decision is the memo."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Sviatoslav Pokrovskii" }]
+dependencies = [
+  "budget-rule",
+  "duckdb>=1.1",
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "PyYAML>=6",
+]
+
+[project.optional-dependencies]
+fit = ["arviz>=0.20", "pymc>=5.16", "pytensor>=2.26"]
+app = ["streamlit>=1.40"]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,79 @@
+Should this tactic be scaled after the geo experiment?
+
+Estimand
+Cumulative incremental sales from the first test day through the last day after the test, from a CUPED difference with one vote per geo, scaled by the observed treated location-days in that window. Sales pulled forward from the weeks after the test lower this total. DiD does not decide.
+
+Analysis plan
+Version 5, sha256 46c0ed2ea422, committed before this run. It was written after earlier reads of this panel had been seen, so it is fixed after exploration, not before any data were seen.
+
+Read of the public panel
+The test group is 50 geos, assigned 5 per stratum of 10 geos ranked by pre-test sales. The cumulative window runs from 2015-02-16 to 2015-04-07 and uses 2540 observed treated location-days. 10 treated location-days inside it are missing and are not imputed.
+CUPED cumulative incremental sales: 151035.
+Randomization interval: 115768 to 198149, with each hypothesized total spread proportional to pre-period sales. That interval reassigns the treated slots inside the strata, refits theta on every redraw, and it decides. The plan picks the spread with the slope test below at alpha 0.05: p-value below 0.001, so the proportional interval decides.
+Interval with an equal spread per location-day, for reading: 88404 to 226169.
+Normal approximation, for reference: 70973 to 231098.
+DiD, for reference: 142185 (normal approximation -278359 to 562730).
+On control geos the pre-period mean and the change into the window have correlation 0.998, so the daily standard error falls from 84 to 16.
+
+The two parts of that window, for reading only:
+- test window, 2015-02-16 to 2015-03-15: CUPED 149731 (randomization interval 132272 to 173431).
+- after the test, 2015-03-16 to 2015-04-07: CUPED 1126 (randomization interval -19182 to 27688).
+
+Pretest-weighted CUPED total
+Descriptive only: 636997, 4.2 times the decision total. Under a homogeneous additive effect both totals estimate the same number. When the effect grows with geo size the weighted total counts the large geos twice. Median pre-test daily sales are 143, the largest geo is 5303, and the five largest geos are 40% of pre-test sales.
+
+Tail, for reading only
+Without the five test geos that have the highest advertising cost, CUPED cumulative incremental sales: 71452 (randomization interval 53544 to 93455).
+Daily effect per geo-day by pretest-volume stratum, smallest first, exact interval over the 252 assignments inside each stratum:
+- stratum 1 (median 24): 4 (0 to 9)
+- stratum 2 (median 41): 8 (1 to 16)
+- stratum 3 (median 58): 9 (-3 to 21)
+- stratum 4 (median 89): 2 (-16 to 21)
+- stratum 5 (median 123): 20 (-2 to 41)
+- stratum 6 (median 165): 28 (12 to 44)
+- stratum 7 (median 233): 12 (-18 to 40)
+- stratum 8 (median 395): 61 (44 to 84)
+- stratum 9 (median 939): 147 (70 to 222)
+- stratum 10 (median 2074): 304 (132 to 507)
+The effect per geo-day changes by 61 per unit of log pre-test sales (randomization p-value below 0.001 against a constant additive effect, 2000 stratified reassignments).
+
+Decision power on the pre-test
+It does not decide. Each of 300 draws per row assigns test geos inside strata on a 28-day pseudo window, plants an effect whose true cost per incremental sale is fixed, and runs the same two-stage rule, the slope test and then the chosen interval, with 500 reassignments and the same cap. Scale is right below the cap and wrong above it. The pseudo window has no weeks after it, so this covers the test window only, and 14 pseudo pre-period days make the covariate noisier than in the read.
+- additive, no true effect: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 95%, proportional interval chosen in 5%, mean bias -20, weighted-total mean bias 598.
+- additive, true cost 0.25: scale in 100% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 98%, proportional interval chosen in 9%, mean bias 202, weighted-total mean bias 1145.
+- additive, true cost 0.40: scale in 87% (Monte Carlo standard error 1.9%), correct call in 87%, coverage 99%, proportional interval chosen in 8%, mean bias -256, weighted-total mean bias -830.
+- additive, true cost 0.50: scale in 1% (Monte Carlo standard error 0.5%), at the cap either call is defensible, coverage 99%, proportional interval chosen in 7%, mean bias 589, weighted-total mean bias 3705.
+- additive, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 98%, proportional interval chosen in 7%, mean bias -344, weighted-total mean bias -2387.
+- proportional, no true effect: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 95%, proportional interval chosen in 5%, mean bias -466, weighted-total mean bias -2390.
+- proportional, true cost 0.25: scale in 100% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 95%, proportional interval chosen in 100%, mean bias -2423, weighted-total mean bias 673955.
+- proportional, true cost 0.40: scale in 87% (Monte Carlo standard error 1.9%), correct call in 87%, coverage 94%, proportional interval chosen in 100%, mean bias -1455, weighted-total mean bias 423304.
+- proportional, true cost 0.50: scale in 4% (Monte Carlo standard error 1.1%), at the cap either call is defensible, coverage 94%, proportional interval chosen in 100%, mean bias -2180, weighted-total mean bias 339836.
+- proportional, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, coverage 96%, proportional interval chosen in 100%, mean bias -1836, weighted-total mean bias 282680.
+
+Blind check
+200 synthetic panels per row, drawn after the plan was fixed from a seed in it, with log-normal geo sizes fitted to pre-test sales and noise that grows with geo size. The sizes and noise come from the same pre-test, so this checks the rule under that family of panels, not under an unknown one. The two-stage rule runs with 500 reassignments.
+- additive, true cost 0.25: scale in 100% (Monte Carlo standard error 0.5%), correct call in 100%, proportional interval chosen in 6%.
+- additive, true cost 0.40: scale in 82% (Monte Carlo standard error 2.7%), correct call in 82%, proportional interval chosen in 6%.
+- additive, true cost 0.50: scale in 1% (Monte Carlo standard error 0.7%), at the cap either call is defensible, proportional interval chosen in 6%.
+- additive, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, proportional interval chosen in 6%.
+- proportional, true cost 0.25: scale in 100% (Monte Carlo standard error 0.0%), correct call in 100%, proportional interval chosen in 100%.
+- proportional, true cost 0.40: scale in 82% (Monte Carlo standard error 2.7%), correct call in 82%, proportional interval chosen in 99%.
+- proportional, true cost 0.50: scale in 3% (Monte Carlo standard error 1.2%), at the cap either call is defensible, proportional interval chosen in 100%.
+- proportional, true cost 0.60: scale in 0% (Monte Carlo standard error 0.0%), correct call in 100%, proportional interval chosen in 100%.
+
+Recommendation
+Hold. Confirm on a new panel. The cumulative incremental interval is positive and the cost per incremental sale at its lower bound is within the cap. This plan was written after the slope on this panel, so that is not a confirmatory scale.
+Cost per incremental sale at the decision bound: 0.43.
+Observed test cost 50000. Cap 0.5.
+The decision uses the randomization lower bound of the cumulative total, not the point estimate and not the normal approximation. The cap means incremental sales must be at least twice the test spend. It is a planning assumption for this public case, not an employer budget. The test cost is the observed advertising cost in the cumulative window.
+
+What changed after the first run
+Commit 2af3759 decided on the unweighted CUPED point estimate against the cap, with a normal interval, and said scale.
+Commit 436088c moved the decision to a pretest-weighted CUPED total with a stratified randomization interval and its lower bound, added a power gate from 80 draws and a cooldown lower-bound gate, and said do not scale.
+Commit 3831ec4 returned to one vote per geo, made power a design check, and made the cooldown test refuse only on sales pulled forward. It said do not scale.
+Version 4 of the analysis plan makes the cumulative total through the weeks after the test the estimand, so pull-forward lowers the bound that decides and the separate cooldown test is gone. Power against zero is replaced by decision power at known true costs.
+Version 5 keeps that estimand and the cap and changes the interval: a stratified slope test chooses between hypotheses spread equally per location-day and hypotheses proportional to pre-period sales, because the version 4 read showed an effect that grows with geo size and a rule that could not fund a tactic under the cap with that shape. Version 5 was written after that read, so it is a plan fixed after exploration on this panel, not one fixed before any data were seen; the decision power and blind check run the whole two-stage rule.
+The plan file was committed before this run, its hash is in the case result, and the blind check draws its panels from a seed fixed in that plan. The cap did not change in any version. The recommendation speech was later tightened to Hold on this post-exploration plan. The interval, the cap and the plan hash did not change.
+
+What would overturn this
+A confirmatory read on a new panel under a plan fixed before that assignment. The interval and the cap on this panel did not change. The numbers are from this public panel and the assumptions in the analysis plan.

@@ -1,0 +1,27 @@
+{
+  "scale": 2.0,
+  "published": true,
+  "failures": [],
+  "channels": {
+    "facebook": {
+      "relative_change": 0.11909973705641422,
+      "material": false
+    },
+    "ooh": {
+      "relative_change": 0.14949311674963234,
+      "material": false
+    },
+    "print": {
+      "relative_change": 0.06471887697785342,
+      "material": false
+    },
+    "search": {
+      "relative_change": 0.17937248165351938,
+      "material": false
+    },
+    "tv": {
+      "relative_change": 0.021434761993635924,
+      "material": false
+    }
+  }
+}

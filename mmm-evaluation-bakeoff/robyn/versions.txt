@@ -1,0 +1,20 @@
+# Versions that produced artifacts/robyn_export.json. renv is not installed, so this is a record, not a lock.
+R 4.3.1 (2023-06-16), x86_64 macOS build
+Robyn 3.12.1
+jsonlite 1.8.7
+reticulate 1.43.0
+prophet 1.0
+nloptr 2.0.3
+glmnet 4.1.10
+data.table 1.14.8
+dplyr 1.1.4
+# Python for nevergrad, through RETICULATE_PYTHON, run as x86_64 to match R
+Python 3.13.2
+nevergrad 1.0.12
+numpy 2.5.4
+pandas 3.0.6
+scipy 1.18.1
+# Run settings
+ROBYN_TRIALS=5
+ROBYN_ITERS=2000
+cores=1, seed from artifacts/manifest.json

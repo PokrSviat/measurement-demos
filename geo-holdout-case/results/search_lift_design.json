@@ -1,0 +1,83 @@
+{
+  "note": "planning proxy: noise from a simulated public geo panel; one-sided randomization test of incremental = extra spend, not a full inverted interval; no cell is a test to run",
+  "channel": "search",
+  "point_roi": 3.4438181636282352,
+  "spend_to_revenue": 0.003126496003601964,
+  "n_geos": 50,
+  "n_treated": 25,
+  "pre_days": 28,
+  "cells": [
+    {
+      "duration_days": 28,
+      "increase": 0.5,
+      "power_at_point_roi": 0.035,
+      "power_at_roi_1_5": 0.025,
+      "false_settle_at_payback": 0.025,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 28,
+      "increase": 1.0,
+      "power_at_point_roi": 0.05,
+      "power_at_roi_1_5": 0.025,
+      "false_settle_at_payback": 0.025,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 28,
+      "increase": 2.0,
+      "power_at_point_roi": 0.12,
+      "power_at_roi_1_5": 0.035,
+      "false_settle_at_payback": 0.025,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 42,
+      "increase": 0.5,
+      "power_at_point_roi": 0.065,
+      "power_at_roi_1_5": 0.05,
+      "false_settle_at_payback": 0.045,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 42,
+      "increase": 1.0,
+      "power_at_point_roi": 0.07,
+      "power_at_roi_1_5": 0.06,
+      "false_settle_at_payback": 0.045,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 42,
+      "increase": 2.0,
+      "power_at_point_roi": 0.13,
+      "power_at_roi_1_5": 0.065,
+      "false_settle_at_payback": 0.045,
+      "mde_roi_80": 7.5625
+    },
+    {
+      "duration_days": 56,
+      "increase": 0.5,
+      "power_at_point_roi": 0.045,
+      "power_at_roi_1_5": 0.04,
+      "false_settle_at_payback": 0.035,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 56,
+      "increase": 1.0,
+      "power_at_point_roi": 0.085,
+      "power_at_roi_1_5": 0.04,
+      "false_settle_at_payback": 0.035,
+      "mde_roi_80": null
+    },
+    {
+      "duration_days": 56,
+      "increase": 2.0,
+      "power_at_point_roi": 0.195,
+      "power_at_roi_1_5": 0.04,
+      "false_settle_at_payback": 0.035,
+      "mde_roi_80": null
+    }
+  ]
+}

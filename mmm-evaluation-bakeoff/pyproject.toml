@@ -1,0 +1,19 @@
+[project]
+name = "mmm-evaluation-bakeoff"
+version = "0.1.0"
+description = "Compare PyMC, Robyn, and Meridian on one public weekly series."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Sviatoslav Pokrovskii" }]
+dependencies = ["budget-rule", "matplotlib>=3.8", "pandas>=2.2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+meridian = ["google-meridian"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

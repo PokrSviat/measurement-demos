@@ -1,0 +1,15 @@
+{
+  "dataset_sha256": "d541cfa92ca68fbda03ce6c987733e996b3abf44a95f2a32ce6836b9f8258cf1",
+  "target": "revenue",
+  "date_min": "2015-11-23",
+  "date_max": "2019-11-11",
+  "regressors": [
+    "tv_S",
+    "ooh_S",
+    "print_S",
+    "facebook_I",
+    "search_clicks_P"
+  ],
+  "holdout_weeks": 8,
+  "seed": 20241006
+}

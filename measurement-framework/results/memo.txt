@@ -1,0 +1,39 @@
+Which paid channels earn back the next ruble at observed spend?
+
+Estimand
+Marginal ROI of one extra ruble at observed weekly spend, spend-weighted across training weeks whose full adstock horizon sits inside the series. The point is the mean of that derivative across posterior draws. The interval is the 2.5th to 97.5th percentile of the same draws. The media coefficient prior is normal and centered at zero, so contribution can be negative. The model controls for a linear trend and two yearly harmonics and carries AR(1) errors. A channel whose 95% interval sits entirely above or below 1 is reported as an interval fact. Recovery coverage and mean bias are diagnostics on a misspecified response. This national weekly series does not identify the mix, so no channel is scaled or cut. Average contribution over total spend is not this estimand.
+
+Holdout
+Model MAPE 0.038. Training-mean MAPE 0.270. Lag-52 MAPE 0.125. The 0.5 MAPE gate is a sanity check that this series passes easily. Forecast accuracy does not validate a channel ROI.
+Backtest on non-overlapping eight-week windows, each fit only on the weeks before it. The model beats the lag-52 forecast in 3 of 3 windows. It checks the forecast and does not award a label.
+- holdout from 2019-09-23: model MAPE 0.038, training-mean 0.270, lag-52 0.125.
+- holdout from 2019-07-29: model MAPE 0.056, training-mean 0.184, lag-52 0.082.
+- holdout from 2019-06-03: model MAPE 0.081, training-mean 1.057, lag-52 0.176.
+
+Errors
+The model carries AR(1) errors with rho 0.00 (95% interval -0.17 to 0.18). Autocorrelation of the structural errors at lags 1 to 4: -0.04, +0.07, -0.11, -0.03 (Ljung-Box p 0.456). After the AR(1) term: -0.04, +0.07, -0.11, -0.02 (p 0.296). The rho interval includes 0 and the residuals show no autocorrelation, so the intervals are not narrowed by correlated weeks.
+
+Channels
+An interval entirely below 1 or entirely above 1 is an interval fact. A point below that line whose interval includes it is not a cut. Recovery coverage of at least 90% and the mean bias are diagnostics on a misspecified response; they do not license a budget label. This national weekly series does not identify the mix, so no channel is scaled or cut. Prior contraction is one minus the posterior over the prior variance of the marginal ROI itself, with the prior from prior predictive draws; near zero means the data barely moved the prior. Channels are reported at 95% each, without a family-wise correction. This is one fit on one public series, not a budget optimizer.
+- print: ROI 7.08 (95% interval -0.28 to 15.33), prior contraction 0.94. Payback is not settled and the channel is not cut.
+- facebook: ROI 6.29 (95% interval -9.76 to 24.26), prior contraction 0.94. Payback is not settled and the channel is not cut.
+- tv: ROI 3.73 (95% interval 2.36 to 5.51), prior contraction 0.94. The interval is above 1 on this fit; recovery coverage is 95%, mean bias -0.05 under the Hill truth (true 2.46). That is not a mix move.
+- search: ROI 3.44 (95% interval -9.53 to 19.60), prior contraction 0.88. Payback is not settled and the channel is not cut.
+- ooh: ROI 0.39 (95% interval -0.23 to 1.23), prior contraction 0.87. Payback is not settled and the channel is not cut.
+Contraction is at least 0.5 for every channel.
+
+Prior check
+Every media prior 2 times as wide moves ROI by facebook +12%, ooh +15%, print +6%, search +18%, tv +2%. Every move is inside the 25% check.
+
+Control check
+Without competitor_sales_B as a control, ROI moves print 7.08 to 8.34, facebook 6.29 to 12.73, tv 3.73 to 3.96, search 3.44 to 11.28, ooh 0.39 to 0.13. That control is market demand, so part of what it absorbs may be media. This check does not decide.
+
+Recovery check.
+Revenue simulated 100 times from a delayed adstock and a Hill saturation that the model cannot represent, with AR(1) noise, and refit. 99 refits cleared the QA gate. The 95% interval held the true marginal ROI in: facebook 98% (Monte Carlo standard error 1%, true 5.55, mean bias -2.54), ooh 96% (Monte Carlo standard error 2%, true 0.31, mean bias -0.19), print 97% (Monte Carlo standard error 2%, true 6.19, mean bias -1.77), search 99% (Monte Carlo standard error 1%, true 3.47, mean bias -1.86), tv 95% (Monte Carlo standard error 2%, true 2.46, mean bias -0.05). No channel is more than two standard errors under 95%.
+
+No feasible lift test on the available units.
+The highest-value unsettled channel is search: 8% of spend and a 95% interval from -9.53 to 19.60, the highest spend share times interval width among channels whose interval contains 1. To exclude payback if the true ROI is the current point 3.44, raised-spend weeks against baseline weeks need: +10% spend: 176914 weeks per arm; +25% spend: 28307 weeks per arm; +50% spend: 7077 weeks per arm. That ignores carryover and saturation, so it is a lower bound on duration. Even the shortest is more than 52 weeks, so a national test over time cannot settle search. The geo case in this package tests a different tactic and does not calibrate this model.
+On the planning-proxy geo panel no design reached 80% power at the current search point ROI 3.44. That panel is simulated and no cell is a test to run.
+
+What would overturn this
+A series that identifies the channel returns, or a feasible lift test that settles payback. The numbers are from this public weekly series.

@@ -1,0 +1,25 @@
+Should holdout error or channel ROI from three models move the mix?
+
+pymc
+holdout MAPE 0.038. r_hat_max 1.004.
+ROI facebook 6.29 (-9.76 to 24.26), ooh 0.39 (-0.23 to 1.23), print 7.08 (-0.28 to 15.33), search 3.44 (-9.53 to 19.60), tv 3.73 (2.36 to 5.51).
+Interval (posterior): 2.5th to 97.5th percentile of posterior draws. Prior contraction on marginal ROI: facebook 0.94, ooh 0.87, print 0.94, search 0.88, tv 0.94.
+
+robyn
+holdout MAPE 0.032.
+ROI facebook 5.58 (2.80 to 11.34), ooh 0.42 (0.26 to 0.56), print 3.38 (3.80 to 8.65), search 6.69 (2.33 to 13.69), tv 2.98 (1.78 to 3.65).
+Interval (model spread): 2.5th to 97.5th percentile across 43 first-Pareto-front models, not a posterior; the point is the selected model and can sit outside it.
+
+meridian
+holdout MAPE 0.016. r_hat_max 1.002.
+ROI facebook 1.39 (0.12 to 6.20), ooh 0.73 (0.16 to 1.50), print 1.96 (0.15 to 7.45), search 0.89 (0.08 to 3.36), tv 3.46 (2.01 to 5.41).
+Interval (posterior): 2.5th to 97.5th percentile of posterior draws. Prior contraction on marginal ROI: facebook -1.14, ooh 0.86, print -1.19, search 0.09, tv 0.12.
+
+Harness
+The harness computes every MAPE from the exported holdout weeks with one formula. Each ROI is one estimand, the marginal ROI of the next ruble at observed spend. The Robyn interval is a spread across models, not a posterior, so the intervals are not the same kind and the table keeps them in separate columns. Prior contraction is one minus posterior over prior variance; near 0 the data did not narrow that prior, and below 0 the posterior is wider than the prior. Meridian refit on seeds 20241006, 20241007, 20241008: the point ROI moves by at most 0.05, on print.
+
+Recommendation
+Do not reallocate. These data do not identify the channel returns.
+The ROI order differs: pymc print > facebook > tv > search > ooh; robyn search > facebook > print > tv > ooh; meridian tv > print > facebook > search > ooh. In at least one model the interval for facebook, ooh, print, search contains 1. Every model puts the interval for tv above 1. pymc facebook ROI moves +12% with a wider prior; meridian facebook ROI moves +162% with a wider prior.
+The models do not share an interval kind, so they are not voted. Per-model value of information: pymc (posterior) search, robyn (model spread) no channel, meridian (posterior) ooh.
+No lift test is recommended.

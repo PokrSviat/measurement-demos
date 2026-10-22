@@ -1,0 +1,92 @@
+{
+  "n_panels": 200,
+  "n_reassignments": 500,
+  "n_slope_reassignments": 500,
+  "seed": 20241012,
+  "panel_model": {
+    "log_pre_mean": 5.118269626655745,
+    "log_pre_sd": 1.3836779497298874,
+    "intercept": -0.20602170165894762,
+    "slope": 0.019530760481922097,
+    "noise_log_scale": -1.65221550897204,
+    "noise_power": 0.6760347975341227,
+    "noise_unit_sd": 2.035693258626416,
+    "n_geos": 100,
+    "stratum_size": 10,
+    "window_days": 28.0
+  },
+  "cells": [
+    {
+      "shape": "additive",
+      "true_cost": 0.25,
+      "n_panels": 200,
+      "scale_share": 0.995,
+      "correct_share": 0.995,
+      "proportional_share": 0.055,
+      "scale_se": 0.004987484335815003
+    },
+    {
+      "shape": "additive",
+      "true_cost": 0.4,
+      "n_panels": 200,
+      "scale_share": 0.825,
+      "correct_share": 0.825,
+      "proportional_share": 0.055,
+      "scale_se": 0.02686773157525585
+    },
+    {
+      "shape": "additive",
+      "true_cost": 0.5,
+      "n_panels": 200,
+      "scale_share": 0.01,
+      "correct_share": 0.01,
+      "proportional_share": 0.06,
+      "scale_se": 0.007035623639735145
+    },
+    {
+      "shape": "additive",
+      "true_cost": 0.6,
+      "n_panels": 200,
+      "scale_share": 0.0,
+      "correct_share": 1.0,
+      "proportional_share": 0.06,
+      "scale_se": 0.0
+    },
+    {
+      "shape": "proportional",
+      "true_cost": 0.25,
+      "n_panels": 200,
+      "scale_share": 1.0,
+      "correct_share": 1.0,
+      "proportional_share": 1.0,
+      "scale_se": 0.0
+    },
+    {
+      "shape": "proportional",
+      "true_cost": 0.4,
+      "n_panels": 200,
+      "scale_share": 0.825,
+      "correct_share": 0.825,
+      "proportional_share": 0.99,
+      "scale_se": 0.02686773157525585
+    },
+    {
+      "shape": "proportional",
+      "true_cost": 0.5,
+      "n_panels": 200,
+      "scale_share": 0.03,
+      "correct_share": 0.25,
+      "proportional_share": 1.0,
+      "scale_se": 0.012062338081814818
+    },
+    {
+      "shape": "proportional",
+      "true_cost": 0.6,
+      "n_panels": 200,
+      "scale_share": 0.0,
+      "correct_share": 1.0,
+      "proportional_share": 1.0,
+      "scale_se": 0.0
+    }
+  ]
+}

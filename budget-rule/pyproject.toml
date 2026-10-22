@@ -1,0 +1,17 @@
+[project]
+name = "budget-rule"
+version = "0.1.0"
+description = "Lower-bound cost test and lift-test rule shared across the measurement demos."
+requires-python = ">=3.11"
+authors = [{ name = "Sviatoslav Pokrovskii" }]
+dependencies = ["matplotlib>=3.8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
