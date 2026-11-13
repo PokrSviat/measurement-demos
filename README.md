@@ -22,3 +22,4 @@ bash scripts/test.sh
 ```
 
 That command installs the pinned test dependencies and runs the shared cost and lift-test rule in `budget-rule` plus the four demos. Meridian and Robyn are not part of this run. `bash scripts/refresh_bakeoff.sh` refits them from the PyMC export with the versions in `mmm-evaluation-bakeoff/meridian/requirements.lock` and `mmm-evaluation-bakeoff/robyn/versions.txt`.
+`bash scripts/run_geo_docker.sh` runs the geo-holdout case in Docker and checks its key numbers against the published JSON.

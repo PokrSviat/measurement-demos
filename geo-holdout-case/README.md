@@ -40,6 +40,14 @@ python -m geo_holdout.lift_design
 
 Outputs land in `results/case_result.json`, `results/validation.json`, `results/blind_check.json`, `results/search_lift_design.json`, `results/memo.txt`, `results/memo.pdf`, and `results/path.png`. The case run takes about seven minutes on a laptop. Re-run before publishing and check that the memo numbers match the JSON.
 
+### Run in Docker
+
+```bash
+bash scripts/run_geo_docker.sh
+```
+
+Run that command from the repository root. It writes `case_result.json`, `validation.json`, `blind_check.json`, `memo.txt`, `memo.pdf`, and `path.png` to `out/geo`. The check compares the key numbers to the published JSON with a relative tolerance of 1e-6. The image installs the pinned distributions in `requirements-docker.lock`. The base image is `python:3.11-slim` pinned by digest.
+
 ## CV line
 
 Estimated a published geo assignment on a public geo panel with CUPED and a two-stage randomization interval that switches to a proportional-effect hypothesis when a slope test rejects a constant effect, under an analysis plan written after earlier reads of the same panel, and held the scale call until a confirmatory panel.

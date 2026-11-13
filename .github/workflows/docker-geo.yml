@@ -1,0 +1,41 @@
+name: docker-geo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - requirements-ci.txt
+      - requirements-docker.lock
+      - budget-rule/**
+      - geo-holdout-case/**
+      - scripts/run_geo_docker.sh
+      - scripts/check_geo_result.py
+      - .github/workflows/docker-geo.yml
+  pull_request:
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - requirements-ci.txt
+      - requirements-docker.lock
+      - budget-rule/**
+      - geo-holdout-case/**
+      - scripts/run_geo_docker.sh
+      - scripts/check_geo_result.py
+      - .github/workflows/docker-geo.yml
+
+jobs:
+  docker-geo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/run_geo_docker.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geo-results
+          path: out/geo
