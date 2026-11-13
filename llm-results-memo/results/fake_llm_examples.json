@@ -1,0 +1,41 @@
+{
+  "note": "Scripted drafts from FakeLLM, written by hand to exercise the check. They are not language-model output.",
+  "runs": [
+    {
+      "source": "geo-holdout-case/results/case_result.json",
+      "used": "llm",
+      "client": "fake-llm:scripted-grounded",
+      "draft": "The geo test with 50 test and 50 control geos added about 151k incremental sales (randomization interval 115,768 to 198,149). After the test the effect was close to zero (1,126).\nRecommendation: Hold. Confirm on a new panel before any scale decision.",
+      "check": {
+        "passed": true,
+        "unsupported": [],
+        "bad_dates": [],
+        "decision_found": "Hold",
+        "decision_ok": true,
+        "problems": []
+      },
+      "memo": "The geo test with 50 test and 50 control geos added about 151k incremental sales (randomization interval 115,768 to 198,149). After the test the effect was close to zero (1,126).\nRecommendation: Hold. Confirm on a new panel before any scale decision."
+    },
+    {
+      "source": "geo-holdout-case/results/case_result.json",
+      "used": "template (llm draft rejected)",
+      "client": "fake-llm:scripted-hallucinated",
+      "draft": "The geo test lifted sales by 18% and returned 3.2x ROI, about 151k incremental sales.\nRecommendation: Scale the tactic to all regions.",
+      "check": {
+        "passed": false,
+        "unsupported": [
+          "18%",
+          "3.2"
+        ],
+        "bad_dates": [],
+        "decision_found": "Scale",
+        "decision_ok": false,
+        "problems": [
+          "recommendation says 'Scale', source decision is 'Hold'",
+          "numbers not in source: ['18%', '3.2']"
+        ]
+      },
+      "memo": "Should this tactic be scaled after the geo experiment?\n\nA geo test ran from 2015-02-16 to 2015-03-15, read through 2015-04-07, with 50 test and 50 control geos and a test cost of 50,000.\nCumulative incremental sales (CUPED): 151,035; randomization interval 115,768 to 198,149.\nAfter the test the effect was 1,126 (interval -19,182 to 27,688).\nCost per incremental sale at the lower bound: 0.43.\n\nRecommendation: Hold. Confirm on a new panel. The cumulative incremental interval is positive and the cost per incremental sale at its lower bound is within the cap. This plan was written after the slope on this panel, so that is not a confirmatory scale."
+    }
+  ]
+}

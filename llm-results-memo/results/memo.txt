@@ -1,0 +1,8 @@
+Should this tactic be scaled after the geo experiment?
+
+A geo test ran from 2015-02-16 to 2015-03-15, read through 2015-04-07, with 50 test and 50 control geos and a test cost of 50,000.
+Cumulative incremental sales (CUPED): 151,035; randomization interval 115,768 to 198,149.
+After the test the effect was 1,126 (interval -19,182 to 27,688).
+Cost per incremental sale at the lower bound: 0.43.
+
+Recommendation: Hold. Confirm on a new panel. The cumulative incremental interval is positive and the cost per incremental sale at its lower bound is within the cap. This plan was written after the slope on this panel, so that is not a confirmatory scale.
