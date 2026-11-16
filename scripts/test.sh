@@ -11,6 +11,7 @@ PYTHON="${PYTHON:-python3}"
 "$PYTHON" -m pip install -e "./measurement-reconciliation[dev]"
 "$PYTHON" -m pip install -e "./mmm-evaluation-bakeoff[dev]"
 "$PYTHON" -m pip install -e "./llm-results-memo[dev]"
-for package in budget-rule geo-holdout-case measurement-framework measurement-reconciliation mmm-evaluation-bakeoff llm-results-memo; do
+"$PYTHON" -m pip install -e "./quasi-experiments[dev]"
+for package in budget-rule geo-holdout-case measurement-framework measurement-reconciliation mmm-evaluation-bakeoff llm-results-memo quasi-experiments; do
   (cd "$package" && "$PYTHON" -m pytest -q)
 done

@@ -4,3 +4,5 @@ duckdb==1.5.6
 PyYAML==6.0.3
 matplotlib==3.11.2
 pytest==9.1.1
+statsmodels==0.15.0
+scipy==1.17.1

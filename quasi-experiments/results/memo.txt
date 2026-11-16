@@ -1,0 +1,9 @@
+Simulated interrupted time series and sharp regression discontinuity. The effects are known.
+
+Interrupted time series
+Level truth 60, estimate 72.18 (51.89 to 92.47). Slope truth 1.5, estimate 1.17 (0.66 to 1.68). Cumulative truth 5109, estimate 5299.26 (4363.90 to 6234.62). Placebo share 0.00.
+
+Regression discontinuity
+Tau truth 2, h=5 estimate 2.416 (1.619 to 3.212). Tenure truth 0, estimate -0.024 (-0.064 to 0.017). Density jump without bunching 0.011 (se 0.033, p 0.752). With bunching share 0.3, density jump 1.109 (se 0.098, p 1.641e-29). Placebo cutoffs containing 0: 1.00.
+
+There is no real panel. The density check is a simplified McCrary test, not rddensity. The intervals are conventional, not bias-corrected. The rd extra is not used.

@@ -1,0 +1,24 @@
+[project]
+name = "quasi"
+version = "0.1.0"
+description = "Quasi-experiment method demos."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Sviatoslav Pokrovskii" }]
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "statsmodels>=0.14",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+rd = ["rdrobust", "rddensity"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

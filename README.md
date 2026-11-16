@@ -12,6 +12,7 @@ Read in this order:
 4. `mmm-evaluation-bakeoff` — PyMC, Robyn, and Meridian on one public weekly series. The harness computes holdout MAPE with one formula and shows each ROI with its interval. Posterior intervals and model spread sit in separate columns. Each model reports a value-of-information channel on its own interval; the models are not voted and no lift test is recommended. The channels are not identified on this series, so the memo does not reallocate. Robyn and Meridian are participants, not a production stack.
 
 5. `llm-results-memo` — a language model drafts a marketing summary of the geo-holdout result. The draft is kept only when every number rounds to a value in the result file and the recommendation matches its decision; otherwise a template memo is used. Tests use a scripted fake model, so CI needs no key. The example in the folder is the template, not model output.
+6. `quasi-experiments` — an interrupted time series and a sharp regression discontinuity on simulated series with known effects. The time-series interval is Newey-West. The discontinuity interval is a conventional local-linear interval, not a bias-corrected one. The density check is a simplified McCrary test, not rddensity. There is no real panel.
 
 Real-time bidding and a user-level experiment are not in this set.
 

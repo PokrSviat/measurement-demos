@@ -1,0 +1,33 @@
+{
+  "data": "simulated",
+  "truth": {
+    "baseline": 1000.0,
+    "trend": 0.5,
+    "level": 60.0,
+    "slope": 1.5,
+    "rho": 0.6,
+    "noise_sd": 25.0,
+    "t0": 104,
+    "cumulative": 5109.0,
+    "n_weeks": 156
+  },
+  "estimate": {
+    "level": {
+      "estimate": 72.17904937259468,
+      "low": 51.88952737935101,
+      "high": 92.46857136583834
+    },
+    "slope": {
+      "estimate": 1.1658771242425674,
+      "low": 0.6559210227373597,
+      "high": 1.675833225747775
+    },
+    "cumulative": {
+      "estimate": 5299.263634120567,
+      "low": 4363.90447285305,
+      "high": 6234.622795388084
+    },
+    "placebo_share": 0.0,
+    "cov": "HAC"
+  }
+}
