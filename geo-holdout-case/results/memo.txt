@@ -4,7 +4,7 @@ Estimand
 Cumulative incremental sales from the first test day through the last day after the test, from a CUPED difference with one vote per geo, scaled by the observed treated location-days in that window. Sales pulled forward from the weeks after the test lower this total. DiD does not decide.
 
 Analysis plan
-Version 5, sha256 46c0ed2ea422, committed before this run. It was written after earlier reads of this panel had been seen, so it is fixed after exploration, not before any data were seen.
+Version 5, sha256 46c0ed2ea422. The version 5 plan was written after exploring this panel. The plan and the results were committed together, so the result is exploratory, hence Hold. It was written after earlier reads of this panel had been seen, so it is fixed after exploration, not before any data were seen.
 
 Read of the public panel
 The test group is 50 geos, assigned 5 per stratum of 10 geos ranked by pre-test sales. The cumulative window runs from 2015-02-16 to 2015-04-07 and uses 2540 observed treated location-days. 10 treated location-days inside it are missing and are not imputed.
@@ -68,12 +68,10 @@ Observed test cost 50000. Cap 0.5.
 The decision uses the randomization lower bound of the cumulative total, not the point estimate and not the normal approximation. The cap means incremental sales must be at least twice the test spend. It is a planning assumption for this public case, not an employer budget. The test cost is the observed advertising cost in the cumulative window.
 
 What changed after the first run
-Commit 2af3759 decided on the unweighted CUPED point estimate against the cap, with a normal interval, and said scale.
-Commit 436088c moved the decision to a pretest-weighted CUPED total with a stratified randomization interval and its lower bound, added a power gate from 80 draws and a cooldown lower-bound gate, and said do not scale.
-Commit 3831ec4 returned to one vote per geo, made power a design check, and made the cooldown test refuse only on sales pulled forward. It said do not scale.
+The version 5 plan was written after exploring this panel. The plan and the results were committed together, so the result is exploratory, hence Hold.
 Version 4 of the analysis plan makes the cumulative total through the weeks after the test the estimand, so pull-forward lowers the bound that decides and the separate cooldown test is gone. Power against zero is replaced by decision power at known true costs.
 Version 5 keeps that estimand and the cap and changes the interval: a stratified slope test chooses between hypotheses spread equally per location-day and hypotheses proportional to pre-period sales, because the version 4 read showed an effect that grows with geo size and a rule that could not fund a tactic under the cap with that shape. Version 5 was written after that read, so it is a plan fixed after exploration on this panel, not one fixed before any data were seen; the decision power and blind check run the whole two-stage rule.
-The plan file was committed before this run, its hash is in the case result, and the blind check draws its panels from a seed fixed in that plan. The cap did not change in any version. The recommendation speech was later tightened to Hold on this post-exploration plan. The interval, the cap and the plan hash did not change.
+The plan hash is in the case result, and the blind check draws its panels from a seed fixed in that plan. The cap did not change in any version. The interval and the cap did not change.
 
 What would overturn this
 A confirmatory read on a new panel under a plan fixed before that assignment. The interval and the cap on this panel did not change. The numbers are from this public panel and the assumptions in the analysis plan.

@@ -14,7 +14,7 @@ This is a guard around a text generator. It does not make the model more accurat
 4. `grounding.py` checks the draft:
    - Every number is extracted (thousands separators, `k`/`thousand`/`m`/`million`, signs, `%`/`percent`, a leading `$`). ISO dates are pulled out first and must equal a source date.
    - A number is supported when some fact value rounds to it at the precision the text shows: `151k` covers 151,035, `152k` does not. A percent is matched against a fraction times 100 or against the value itself, so `40%` covers a share of 0.4018. A dropped minus sign is a different number.
-   - The `Recommendation:` line must exist and its first decision word (Hold, Scale, Stop) must equal the source decision. Later words on the line, such as "not a confirmatory scale" in the reason, do not decide.
+   - The `Recommendation:` line must exist and its first decision word (Hold, Scale, Stop, Do not scale) must equal the source decision. A later "scale" in the reason does not decide.
 5. `run.py` fails closed: no client, or any problem in the check, and the memo is the template. The template is held to the same check and the run stops if it fails.
 
 Rounding tolerance is generous on purpose: `0.2 million` passes for 151,035 because it is a valid rounding. The check catches invented and altered numbers, not vague ones. Counts written as words ("five") are not checked.

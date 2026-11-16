@@ -2,23 +2,27 @@
 
 Author: Sviatoslav Pokrovskii
 
-These demos are public method work. They are not client work. No employer series, budget, or KPI is in the files.
+How to make a budget decision when the data cannot identify the effect — and when to refuse to change the budget.
 
-Read in this order:
+The answers in the files are Hold, Do not scale, and Do not reallocate. The geo plan was written after exploring that panel, the reconciliation lower bound misses its cap, and the weekly series does not identify channel returns. The numbers and the memos are in [DECISIONS.md](DECISIONS.md).
 
-1. `geo-holdout-case` — a published geo assignment read under an analysis plan written after earlier reads of the same panel: a cumulative CUPED total with one vote per geo through the weeks after the test, a two-stage randomization interval that switches to a proportional-effect hypothesis when a slope test rejects a constant effect, the rule's decision power at known true costs, a blind check on 200 synthetic panels, and a Hold because that plan is not confirmatory.
-2. `measurement-framework` — SQL metric dictionary, channel grain, a PyMC revenue model with trend, seasonality and AR(1) errors, a rolling-origin backtest against naive forecasts, residual autocorrelation, prior contraction on the marginal ROI, prior, control and misspecified-recovery checks as diagnostics, and a finding that no feasible lift test exists on the available units. The mix decision is the memo. A local forecast page is not that decision.
-3. `measurement-reconciliation` — geo, an OLS revenue regression, and Markov attribution on one seeded synthetic dataset, with a rule for which number decides when they disagree and that rule's operating characteristics over 300 seeds. The OLS interval is not a posterior. The Markov model is a method demo, not a production attribution system.
-4. `mmm-evaluation-bakeoff` — PyMC, Robyn, and Meridian on one public weekly series. The harness computes holdout MAPE with one formula and shows each ROI with its interval. Posterior intervals and model spread sit in separate columns. Each model reports a value-of-information channel on its own interval; the models are not voted and no lift test is recommended. The channels are not identified on this series, so the memo does not reallocate. Robyn and Meridian are participants, not a production stack.
+These demos are public method work. No employer series, budget, or KPI is in the files.
 
-5. `llm-results-memo` — a language model drafts a marketing summary of the geo-holdout result. The draft is kept only when every number rounds to a value in the result file and the recommendation matches its decision; otherwise a template memo is used. Tests use a scripted fake model, so CI needs no key. The example in the folder is the template, not model output.
+| Module | Question | Decision | Data | Key file |
+| --- | --- | --- | --- | --- |
+| `geo-holdout-case` | Scale the tested tactic? | Hold | simulated Google geo panel | [results/memo.txt](geo-holdout-case/results/memo.txt) |
+| `measurement-reconciliation` | Which number decides when geo, OLS, and Markov disagree? | Do not scale | synthetic generator in this repo | [results/memo.txt](measurement-reconciliation/results/memo.txt) |
+| `measurement-framework` | Which paid channel earns back the next ruble? | No channel change; no feasible lift test | public simulated Robyn weekly series | [results/memo.txt](measurement-framework/results/memo.txt) |
+| `mmm-evaluation-bakeoff` | Should three models move the mix? | Do not reallocate | same public simulated weekly series | [results/memo.txt](mmm-evaluation-bakeoff/results/memo.txt) |
+| `llm-results-memo` | Can a draft keep the geo decision and its numbers? | Hold, or the template if the draft fails | the geo result file; tests use a scripted fake model | [results/memo.txt](llm-results-memo/results/memo.txt) |
+| `budget-rule` | Does cost at the lower bound clear the cap? | No budget of its own; the demos call it | no series | [src/budget_rule/cost.py](budget-rule/src/budget_rule/cost.py) |
 
 Real-time bidding and a user-level experiment are not in this set.
 
-## Run
+## How to run
 
 ```bash
 bash scripts/test.sh
 ```
 
-That command installs the pinned test dependencies and runs the shared cost and lift-test rule in `budget-rule` plus the four demos. Meridian and Robyn are not part of this run. `bash scripts/refresh_bakeoff.sh` refits them from the PyMC export with the versions in `mmm-evaluation-bakeoff/meridian/requirements.lock` and `mmm-evaluation-bakeoff/robyn/versions.txt`.
+That command installs the pinned test dependencies and runs pytest in `budget-rule`, `geo-holdout-case`, `measurement-framework`, `measurement-reconciliation`, `mmm-evaluation-bakeoff`, and `llm-results-memo`. It does not run `python -m geo_holdout.run_case`, `python -m measurement.fit`, or `bash scripts/refresh_bakeoff.sh`. Those refit the geo case, the PyMC model, and Robyn and Meridian.

@@ -269,10 +269,17 @@ def _recovery_sentence(recovery: RecoveryCheck) -> str:
         if short
         else "No channel is more than two standard errors under 95%."
     )
+    bias = ", ".join(
+        f"{channel} mean bias {recovery.mean_bias[channel]:+.2f} on a truth of {recovery.true_roi[channel]:.2f}"
+        for channel in recovery.coverage
+    )
     return (
         head
         + f"{recovery.n_passed} refits cleared the QA gate. The 95% interval held the true marginal ROI in: {parts}. "
         + verdict
+        + " High coverage is the share of those intervals that contain the truth. "
+        + "A wide interval can cover a biased point. "
+        + f"The point-estimate bias is large: {bias}."
     )
 
 

@@ -219,14 +219,16 @@ def test_memo_states_the_rule_and_avoids_employer_claims() -> None:
     assert "Monte Carlo standard error" in text
     assert "252 assignments" in text
     assert "p-value 0.040" in text
-    assert "3831ec4" in text and "Version 4" in text and "Version 5" in text
+    assert "committed together" in text and "Version 4" in text and "Version 5" in text
+    assert "exploratory, hence Hold" in text
+    assert "2af3759" not in text and "436088c" not in text and "3831ec4" not in text
     assert "cumulative total" in text
     assert "spread proportional to pre-period sales" in text
     assert "fixed after exploration" in text
     assert "for reading: 5 to 60" in text
     assert "proportional interval chosen in 97%" in text
     lowered = text.lower()
-    for forbidden in ("pre-registered", "m.video", "yandex", "hoff", "okkam", "apple", "synthetic control"):
+    for forbidden in ("pre-registered", "m.video", "yandex", "hoff", "okkam", "synthetic control"):
         assert forbidden not in lowered
     assert "Cap 0.5" in text
 

@@ -160,8 +160,8 @@ def experiment_priorities(exports: list[dict]) -> dict[str, dict[str, float]]:
     }
 
 
-def experiment_channel(exports: list[dict]) -> str | None:
-    """Majority model pick; a tie goes to the largest spend share among the picks."""
+def most_common_information_channel(exports: list[dict]) -> str | None:
+    """Most common per-model information channel; a tie goes to the largest spend share among the picks."""
     picks = experiment_by_model(exports)
     voted = [channel for channel in picks.values() if channel is not None]
     if not voted:

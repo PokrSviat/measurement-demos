@@ -4,7 +4,7 @@ Author: Sviatoslav Pokrovskii
 
 The published comparison is PyMC, Robyn, and Meridian on one manifest. The series is Meta Robyn's public `dt_simulated_weekly`. PyMC numbers come from the measurement-framework export. Robyn and Meridian are fit here on that same file, window, target, regressors, and holdout. Meridian's own demo dataset is not part of the score.
 
-Robyn and Meridian are bake-off participants. Neither is a production stack in this repository.
+Robyn and Meridian are bake-off participants. Neither decides the mix in this repository.
 
 ## Compare
 
@@ -45,7 +45,7 @@ python meridian/run_meridian.py --weekly ../measurement-framework/data/dt_simula
 python meridian/run_meridian.py --weekly ../measurement-framework/data/dt_simulated_weekly.csv --manifest artifacts/manifest.json --seed-check /tmp/meridian-seeds
 ```
 
-Both commands write under `artifacts/` of this repository, whichever directory you start them from. The first writes `meridian_export.json` with the holdout path, channel ROI with posterior percentiles, and `r_hat_max`. The ROI prior is Meridian's LogNormal (`loc` 0.2, scale 0.9). The sensitivity run widens the facebook scale from 0.9 to 1.8, writes `meridian_sensitivity.json`, and stores the facebook relative ROI change on the main export. Run the main fit first. Prior contraction is computed on log `roi_m` from 1000 prior draws. `--seed` overrides the manifest seed, and `--seed-check` refits on three consecutive seeds and writes `meridian_seed_check.json` with the point ROI spread.
+Both commands write under `artifacts/` of this repository, whichever directory you start them from. The first writes `meridian_export.json` with the holdout path, channel ROI with posterior percentiles, and `r_hat_max`. The ROI prior is Meridian's LogNormal (`loc` 0.2, scale 0.9). The sensitivity run widens the facebook scale from 0.9 to 1.8, writes `meridian_sensitivity.json`, and stores the facebook relative ROI change on the main export. Run the main fit first. Prior contraction is computed on marginal ROI from 1000 prior draws. `--seed` overrides the manifest seed, and `--seed-check` refits on three consecutive seeds and writes `meridian_seed_check.json` with the point ROI spread.
 
 ## CV line
 

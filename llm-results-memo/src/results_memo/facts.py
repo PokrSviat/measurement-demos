@@ -7,6 +7,7 @@ the text, so the check stays tied to what the prompt showed the model.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -22,14 +23,21 @@ class Facts:
     dates: dict[str, str] = field(default_factory=dict)
 
 
-DECISION_WORDS = ("Hold", "Scale", "Stop")
+# Longer phrase first so "Scale" is not taken from inside "Do not scale".
+DECISION_WORDS = ("Do not scale", "Hold", "Scale", "Stop")
 
 
 def decision_label(recommendation: str, fund: bool | None = None) -> str:
     """First decision word of the recommendation; fund=True without a word means Scale."""
-    head = recommendation.strip().split(".")[0].split()[0].capitalize() if recommendation.strip() else ""
-    if head in DECISION_WORDS:
-        return head
+    text = recommendation.strip()
+    if text:
+        for sentence in re.split(r"(?<=[.!?])\s+", text):
+            head = sentence.strip()
+            for word in DECISION_WORDS:
+                if head.lower().startswith(word.lower()):
+                    rest = head[len(word):]
+                    if rest == "" or not rest[0].isalnum():
+                        return word
     if fund is True:
         return "Scale"
     raise ValueError(f"No decision word in recommendation: {recommendation!r}")

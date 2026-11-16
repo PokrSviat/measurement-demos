@@ -14,12 +14,10 @@ from geo_holdout.validation import ValidationCell
 CHANGE_LOG = "\n".join(
     [
         "What changed after the first run",
-        "Commit 2af3759 decided on the unweighted CUPED point estimate against the cap, with a normal interval, and said scale.",
-        "Commit 436088c moved the decision to a pretest-weighted CUPED total with a stratified randomization interval and its lower bound, added a power gate from 80 draws and a cooldown lower-bound gate, and said do not scale.",
-        "Commit 3831ec4 returned to one vote per geo, made power a design check, and made the cooldown test refuse only on sales pulled forward. It said do not scale.",
+        "The version 5 plan was written after exploring this panel. The plan and the results were committed together, so the result is exploratory, hence Hold.",
         "Version 4 of the analysis plan makes the cumulative total through the weeks after the test the estimand, so pull-forward lowers the bound that decides and the separate cooldown test is gone. Power against zero is replaced by decision power at known true costs.",
         "Version 5 keeps that estimand and the cap and changes the interval: a stratified slope test chooses between hypotheses spread equally per location-day and hypotheses proportional to pre-period sales, because the version 4 read showed an effect that grows with geo size and a rule that could not fund a tactic under the cap with that shape. Version 5 was written after that read, so it is a plan fixed after exploration on this panel, not one fixed before any data were seen; the decision power and blind check run the whole two-stage rule.",
-        "The plan file was committed before this run, its hash is in the case result, and the blind check draws its panels from a seed fixed in that plan. The cap did not change in any version. The recommendation speech was later tightened to Hold on this post-exploration plan. The interval, the cap and the plan hash did not change.",
+        "The plan hash is in the case result, and the blind check draws its panels from a seed fixed in that plan. The cap did not change in any version. The interval and the cap did not change.",
     ]
 )
 
@@ -202,7 +200,9 @@ def memo_text(
             estimand,
             "",
             "Analysis plan",
-            f"Version {plan_version}, sha256 {plan_sha256[:12]}, committed before this run. "
+            f"Version {plan_version}, sha256 {plan_sha256[:12]}. "
+            f"The version {plan_version} plan was written after exploring this panel. "
+            "The plan and the results were committed together, so the result is exploratory, hence Hold. "
             "It was written after earlier reads of this panel had been seen, so it is fixed after exploration, "
             "not before any data were seen.",
             "",

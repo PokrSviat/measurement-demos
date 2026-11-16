@@ -1,3 +1,4 @@
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -102,6 +103,26 @@ def test_decision_label_reads_first_word():
     assert decision_label("Scale the tactic.", True) == "Scale"
     with pytest.raises(ValueError):
         decision_label("Maybe later.", None)
+
+
+def test_do_not_scale_is_a_decision_word():
+    assert decision_label("Do not scale. Above the cap.") == "Do not scale"
+    assert decision_label(
+        "The intervals disagree. The experiment drives the go or no-go. Do not scale."
+    ) == "Do not scale"
+    facts = replace(
+        geo_holdout_facts(SOURCE),
+        decision_label="Do not scale",
+        decision_text="Do not scale.",
+        reason="Above the cap.",
+    )
+    draft = (
+        "The geo test with 50 test geos added about 151k incremental sales "
+        "(interval 115,768 to 198,149).\nRecommendation: Do not scale. Above the cap."
+    )
+    out = produce(facts, FakeLLM(draft))
+    assert out["used"] == "llm"
+    assert out["check"]["decision_found"] == "Do not scale"
 
 
 def test_real_source_template_passes_its_own_check():

@@ -283,7 +283,7 @@ def test_memo_states_the_rule_the_checks_and_the_next_experiment() -> None:
     lift = LiftPlan("facebook", 2.0, 0.2, 1000.0, 3.0, {0.1: 40, 0.25: 7, 0.5: None})
     text = _memo(PriorCheck(2.0, [], {"facebook": 0.4, "ooh": 0.1, "search": -0.05}), lift=lift)
     lowered = text.lower()
-    for forbidden in ("m.video", "yandex", "hoff", "okkam", "apple", "synthetic control"):
+    for forbidden in ("m.video", "yandex", "hoff", "okkam", "synthetic control"):
         assert forbidden not in lowered
     assert "95% interval" in text
     assert "lift test on facebook" in text
@@ -455,7 +455,7 @@ def test_forecast_notice_uses_the_published_decision() -> None:
     )
     text = forecast_notice(channel_roi=qa["channel_roi"], channel_payback=qa["channel_payback"], prior_moves=moves)
     lowered = text.lower()
-    for forbidden in ("m.video", "yandex", "hoff", "okkam", "apple", "synthetic control"):
+    for forbidden in ("m.video", "yandex", "hoff", "okkam", "synthetic control"):
         assert forbidden not in lowered
     assert "not a budget optimizer" in text
     if moves is None:

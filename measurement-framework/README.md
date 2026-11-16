@@ -4,7 +4,7 @@ Author: Sviatoslav Pokrovskii
 
 A reproducible weekly revenue model on Meta Robyn's public simulated series `dt_simulated_weekly`. The repository fixes the channel taxonomy and grain before the fit, checks that grain in SQL, fits a Bayesian model in PyMC, backtests a revenue forecast on three holdouts, checks prior sensitivity, a control ablation and parameter recovery, and serves a local point forecast from the saved curves. The mix decision is the memo.
 
-This is a method demo on a public simulated series. It is not a client model and not a production warehouse.
+This is a method demo on a public simulated series. It is not a client model and not a warehouse.
 
 ## Data
 
@@ -19,7 +19,7 @@ One paid regressor per channel. Facebook uses impressions and search uses clicks
 
 ## Result
 
-tv's interval is above 1 on this fit: marginal ROI 3.73, 95% interval 2.36 to 5.51. Recovery coverage is 95% over 99 passed refits of 100, mean bias −0.05 under a Hill truth. That is an interval fact, not a mix move: this national weekly series does not identify the mix, so no channel is scaled or cut. print, facebook, search and ooh have intervals that contain 1. No feasible lift test exists on the available units: a national test cannot settle search, and no planning-proxy geo design reached 80% power. AR(1) rho is 0.00 (−0.17 to 0.18). Under a misspecified Hill and delayed-adstock truth, coverage is 95% to 99% per channel. `results/memo.txt` and `results/memo.pdf` have every number.
+tv's interval is above 1 on this fit: marginal ROI 3.73, 95% interval 2.36 to 5.51. Recovery coverage is 95% over 99 passed refits of 100, mean bias −0.05 under a Hill truth. That coverage is high because the intervals are wide. The point-estimate bias is large: facebook mean bias -2.54 on a truth of 5.55, ooh mean bias -0.19 on a truth of 0.31, print mean bias -1.77 on a truth of 6.19, search mean bias -1.86 on a truth of 3.47. tv mean bias is -0.05 on a truth of 2.46. That is an interval fact, not a mix move: this national weekly series does not identify the mix, so no channel is scaled or cut. print, facebook, search and ooh have intervals that contain 1. No feasible lift test exists on the available units: a national test cannot settle search, and no planning-proxy geo design reached 80% power. AR(1) rho is 0.00 (−0.17 to 0.18). Under a misspecified Hill and delayed-adstock truth, coverage is 95% to 99% per channel. `results/memo.txt` and `results/memo.pdf` have every number.
 
 Two runs of `python -m measurement.fit` with the same seed wrote byte-identical `qa.json`, `baseline.json`, `curves.csv` and `holdout.json` on this machine.
 
@@ -34,6 +34,8 @@ pip install -e ".[fit,app]"
 python -m measurement.fit
 streamlit run app/calculator.py
 ```
+
+The published results were fitted with PyMC 5.x; the refit is not run in CI, so a newer PyMC may give slightly different draws.
 
 The mix decision is the memo. The page is a local forecast, not that decision. It reads `artifacts/qa.json` and the saved curves. When `artifacts/posterior_draws.npz` is present the number is the mean across draws; otherwise it is the curve forecast. The page still opens when `artifacts/prior_sensitivity.json` is absent. The opening budget is the spend on the last saved week.
 
@@ -50,7 +52,7 @@ python -m measurement.fit --recovery   # 100 seeds of revenue from a Hill, delay
 python -m measurement.fit --memo
 ```
 
-The recovery check plants a response the model does not assume, Hill saturation with delayed adstock, and reports per-channel coverage of the true marginal ROI with a binomial standard error and mean bias. Those numbers are diagnostics; they do not license a budget label. Prior contraction is computed on the marginal ROI from prior predictive draws, not on the media coefficient. The memo reports the prior move per channel, the ROI with and without `competitor_sales_B`, that coverage, and whether a feasible lift test exists. Value of information still ranks unsettled channels by spend share times interval width. A published test exists only if a national sizing is at most 52 weeks per arm or a planning-proxy geo cell reaches 80% power. The full fit script writes `artifacts/manifest.json`. The bake-off repository must use that manifest.
+The recovery check plants a response the model does not assume, Hill saturation with delayed adstock, and reports per-channel coverage of the true marginal ROI with a binomial standard error and mean bias. High coverage comes from wide intervals. The point-estimate bias is large: facebook mean bias -2.54 on a truth of 5.55, ooh mean bias -0.19 on a truth of 0.31, print mean bias -1.77 on a truth of 6.19, search mean bias -1.86 on a truth of 3.47, tv mean bias -0.05 on a truth of 2.46. Those numbers are diagnostics; they do not license a budget label. Prior contraction is computed on the marginal ROI from prior predictive draws, not on the media coefficient. The memo reports the prior move per channel, the ROI with and without `competitor_sales_B`, that coverage, and whether a feasible lift test exists. Value of information still ranks unsettled channels by spend share times interval width. A published test exists only if a national sizing is at most 52 weeks per arm or a planning-proxy geo cell reaches 80% power. The full fit script writes `artifacts/manifest.json`. The bake-off repository must use that manifest.
 
 ## CV line
 

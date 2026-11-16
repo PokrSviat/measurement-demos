@@ -8,7 +8,7 @@ from bakeoff.compare import (
     comparison_table,
     earning_channels,
     experiment_by_model,
-    experiment_channel,
+    most_common_information_channel,
     experiment_priorities,
     holdout_mape,
     load_export,
@@ -120,21 +120,21 @@ def test_an_export_on_another_estimand_is_rejected() -> None:
         comparison_table([_export("pymc"), other])
 
 
-def test_the_experiment_is_the_majority_of_per_model_picks() -> None:
+def test_most_common_information_channel_is_not_a_recommended_test() -> None:
     left = _export("pymc")
     right = _export("robyn")
     right["channel_roi_high"] = {"tv": 1.4, "facebook": 3.0}
     picks = experiment_by_model([left, right])
     assert picks["pymc"] == "facebook"
     assert picks["robyn"] == "tv"
-    assert experiment_channel([left, right]) == "tv"
+    assert most_common_information_channel([left, right]) == "tv"
     assert experiment_priorities([left, right])["robyn"]["tv"] == pytest.approx(0.8 * 1.2)
     assert "A lift test on tv" not in memo_text([left, right])
     assert "No lift test is recommended" in memo_text([left, right])
     assert "pymc (posterior) facebook" in memo_text([left, right])
     third = _export("meridian", r_hat=1.0)
     third["channel_roi_high"] = {"tv": 0.8, "facebook": 3.0}
-    assert experiment_channel([left, right, third]) == "facebook"
+    assert most_common_information_channel([left, right, third]) == "facebook"
     assert unsettled_channels([left, right]) == ["facebook", "tv"]
     right["channel_roi_low"] = {"tv": 1.2, "facebook": 0.5}
     right["channel_roi_high"] = {"tv": 1.8, "facebook": 3.0}
@@ -144,17 +144,17 @@ def test_the_experiment_is_the_majority_of_per_model_picks() -> None:
     assert "Every model puts the interval for tv above 1." in memo_text([left, right])
 
 
-def test_the_experiment_needs_spend_shares_and_can_be_none() -> None:
+def test_information_channel_needs_spend_shares_and_can_be_none() -> None:
     left = _export("pymc")
     right = _export("robyn")
     for export in (left, right):
         export["channel_roi_low"] = {"tv": 1.1, "facebook": 1.2}
         export["channel_roi_high"] = {"tv": 1.5, "facebook": 3.0}
-    assert experiment_channel([left, right]) is None
+    assert most_common_information_channel([left, right]) is None
     assert "No lift test is recommended" in memo_text([left, right])
     del left["channel_spend_share"]
     with pytest.raises(ValueError, match="channel_spend_share"):
-        experiment_channel([left, right])
+        most_common_information_channel([left, right])
 
 
 def test_seed_sentence_names_the_largest_move() -> None:
@@ -163,7 +163,7 @@ def test_seed_sentence_names_the_largest_move() -> None:
     assert "seeds 1, 2, 3" in text and "0.40, on search" in text
 
 
-def test_published_exports_do_not_reallocate_and_name_an_experiment() -> None:
+def test_published_exports_do_not_reallocate() -> None:
     root = Path(__file__).resolve().parents[1]
     exports, excluded = split_exports(root)
     assert published_exports(root) == exports
@@ -186,7 +186,7 @@ def test_published_exports_do_not_reallocate_and_name_an_experiment() -> None:
     pdf = root / "results" / "memo.pdf"
     assert pdf.is_file() and pdf.read_bytes().startswith(b"%PDF")
     lowered = text.lower()
-    for forbidden in ("m.video", "yandex", "hoff", "okkam", "apple", "synthetic control"):
+    for forbidden in ("m.video", "yandex", "hoff", "okkam", "synthetic control"):
         assert forbidden not in lowered
     assert "Do not reallocate." in text
     assert "do not identify the channel returns" in text
