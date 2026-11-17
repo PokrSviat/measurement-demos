@@ -10,6 +10,7 @@ dependencies = ["budget-rule", "matplotlib>=3.8", "pandas>=2.2"]
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 meridian = ["google-meridian"]
+tracking = ["mlflow==3.18.0"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

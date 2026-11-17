@@ -22,6 +22,10 @@ That command writes `artifacts/comparison.csv`, `results/memo.txt`, and `results
 
 The memo does not reallocate. It states whether the ROI order agrees, which channels have an interval containing 1 in at least one model, and the prior sensitivity. Each model reports a value-of-information channel with the shared rule on its own interval. The models are not voted: posterior intervals and model spread are not the same kind. No lift test is recommended. Spend shares come from the PyMC export.
 
+## Experiment tracking (optional)
+
+Tracking is off unless you pass `--track` or set `MLFLOW_TRACKING=1`. `pip install -e ".[tracking]"` installs MLflow. From this directory, `python -m bakeoff.track --track` logs the bake-off already on disk to `./mlruns` and does not refit. `MLFLOW_ALLOW_FILE_STORE=true mlflow ui --backend-store-uri ./mlruns` opens the run. The file store needs that variable on MLflow 3.18.
+
 ## Fits you run
 
 `bash ../scripts/refresh_bakeoff.sh` runs every step below in order. Versions are in `meridian/requirements.lock` and `robyn/versions.txt`.
